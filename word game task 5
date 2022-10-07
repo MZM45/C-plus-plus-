@@ -1,0 +1,34 @@
+\\Write a program that plays a word game with the user. The program should ask the user to enter the following also display user age in days from current date.
+     \\User’s name 
+		\\Year of birth (e.g., 1990) 
+		\\Name of university 
+		\\A favorite hobby 
+	  \\A pet’s name 
+#include <iostream>
+#include<string>
+#include<math.h>
+using namespace std;
+void main() {
+	string name,uni,hobby,pet;
+	int yearofbirth,age;
+    cout<<"Enter your Name:";
+	cin>> name;
+	cout<<"Enter Your university's name:";
+	cin>> uni;
+	cout<<"Enter your hobby:";
+	cin>>hobby;
+	cout<<"Enter your pet name:";
+	cin>>pet;
+	cout<<"Enter your year of birth:";
+	cin>> yearofbirth;
+age= yearofbirth - 2022;
+
+	cout<<"Name" <<":" << name <<endl;
+	cout<<"Year of birth"<<":"<< yearofbirth <<endl;
+	cout<<"Name of University "<<":"<< uni <<endl;
+	cout<<"Favourite Hobby"<<":"<< hobby <<endl;
+	cout<<"pet's name"<<":"<< pet <<endl;
+
+	cout<<" There lives a person named " <<name<< " who is currently " <<age<< " years of age " << name<< " is studying at "<<uni<< " it is interesting because " <<name<< " likes to " <<hobby<< " with " <<pet<< " and they lived happily ever after!\n";
+system("\n pause");
+}
