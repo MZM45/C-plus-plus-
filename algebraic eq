@@ -1,0 +1,17 @@
+\\Write a program to solve the following equation. Take value of a and b from user. X = (a + b) ^2 
+#include <iostream>
+#include<string>
+#include<math.h>
+using namespace std;
+void main() {
+
+int a,b,X;
+cout<<"Enter First number:";
+cin>> a;
+cout<<"Enter second number:";
+cin>> b;
+X=a*a+b*b+2*a*b;
+	cout<<"The answer is:";
+	cout<<X <<endl;
+system("\n pause");
+}
