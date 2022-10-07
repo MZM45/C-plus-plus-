@@ -1,0 +1,32 @@
+\\Write simple calculator program takes an arithmetic operator +, -, /, * and two operands from the user. Then, it performs the calculation on the two operands depending upon the operator entered by the user.
+#include <iostream>
+using namespace std;
+void main() {
+float opr1,opr2;
+	char choice;
+
+    cout << "Enter First Number: ";
+	cin >>opr1;
+	cout << "\nEnter Second Number: ";
+	cin >>opr2;
+	cout<<"\nPress + for addition";
+	cout<<"\nPress - for subtraction";
+	cout<<"\nPress * for multiplication";
+	cout<<"\nPress / for division \n";
+    cin >>choice;
+if(choice=='+'){
+		cout<< opr1 << " + " << opr2 << " = " << opr1 + opr2 << endl;
+	} else if(choice=='-'){
+		cout<< opr1 << " - " << opr2 << " = " << opr1 - opr2 << endl;
+	
+	} else if(choice=='*'){
+		cout<< opr1 << " * " << opr2 << " = " << opr1 * opr2 << endl;
+	
+	} else if(choice=='/'){
+		cout<< opr1 << " / " << opr2 << " = " << opr1 / opr2 << endl;
+	
+	} else {cout<<"Invalid Operator\n";}
+		   
+	system("\n pause"); 
+}
+	
