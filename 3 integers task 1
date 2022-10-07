@@ -1,0 +1,24 @@
+\\Write a program to take 3 values from user. Two values of integer and one value of float data type. Print each result on one line.
+#include <iostream>
+using namespace std;                                 
+void main() {
+	int data1,data2;
+	float data3;
+	
+	cout<<"Enter First Number: \n";
+	cin>> data1;
+	cout<<"Enter second  Number: \n";
+	cin>> data2;
+	cout<<"Enter  float Number: \n";
+	cin>> data3;
+
+	cout<<" The first number is:";
+	cout<< data1<< endl;
+	cout<<" The second number is:";
+	cout<< data2 << endl;
+	cout<<" The Float number is:";
+	cout<< data3 <<endl;
+
+system("\n pause");
+
+}
