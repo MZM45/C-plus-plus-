@@ -1,0 +1,29 @@
+\\Write a C++ program that prompt input roll number, student name and marks of three subjects:	1.	Computer Programming = Cp	2.	Introduction to communication Technologies = ICT  3.	Data Science = DS Calculate total marks, percentage of student. Marks percentage = marks obtained / total * 100
+#include <iostream>
+#include<string>
+using namespace std;
+void main() {
+	int rollnumb;
+	int subtotal=300;
+	string name;
+	float mark1,mark2,mark3,total;
+	double percentage;
+
+	cout<<"Enter Your roll number \n";
+	cin>>rollnumb;
+	cout<<"Enter your name: \n";
+	cin>>name;
+	cout<<"Enter CP Marks\n";
+	cin>> mark1;
+	cout<<"Enter ict Marks\n";
+	cin>>mark2;
+	cout<<"Enter DS Marks\n";
+	cin>>mark3;
+	total=mark1+mark2+mark3;
+	cout<<"Total Marks are:\n";
+	cout<<total <<endl;
+	percentage=total/subtotal * 100;
+		cout<<" Percentage is:";
+	cout<<percentage<<endl;
+system("\n pause");
+}
