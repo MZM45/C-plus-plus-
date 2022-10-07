@@ -1,0 +1,20 @@
+\\Write a C++ program that prompt user to enter value of X and Y.
+\\You have to calculate the value of Hypotenuse (h) and Area(a).
+\\Hypotenuse can be calculated using the following formula:				h = √x^2 + y^2
+\\Area of this right-angled triangle can also be calculated using the following formula: a = ½ * x * y
+#include <iostream>
+#include <math.h>
+using namespace std;
+void main() {
+	
+	float x,y;
+	cout << "\nEnter the value of x = ";
+	cin >>x;
+	cout << "Enter the value of y = ";
+	cin >>y;
+    float area = 0.5*x*y;
+	cout << "\nArea of right angle triangle = " << area;
+    float hypo = sqrtf((x*x)+(y*y));
+	cout << "\nHypothesis of right angle traingle = " <<hypo <<endl;
+    system("pause");
+}
