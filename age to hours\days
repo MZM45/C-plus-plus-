@@ -1,0 +1,19 @@
+Task 1:	
+Write a program that reads input from user and return age in days/hours  using if-else statement.
+Write a program that reads input from user and return age in days/hours  using switch statement.
+
+#include<iostream>
+using namespace std;
+void main () { 
+	int age,choice;
+
+	cout<<("Enter your age: ");
+	cin>>age;
+	cout<<("Enter 1 for age in Days , Enter 0 For age in hours: ");
+	cin>>choice;
+	if (choice==1) 
+	{age=age*365; cout<<("Your age in days is:")<<age<<endl;} 
+	else if (choice==0) { age=age*365*24; cout<<("Your age in hours is:")<<age<<endl;}
+	else {cout<<("Invalid number");}
+	system("pause");
+}
