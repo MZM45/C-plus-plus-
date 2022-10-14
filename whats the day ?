@@ -1,0 +1,35 @@
+Write a program using Switch case statement to find weekday from number of day’s example: 1 = Monday etc.
+#include<iostream>
+using namespace std;
+void main () { 
+	int day;
+	cout<<("enter number of day");
+	cin>>day;
+	switch(day) { 
+	case 1:
+		cout<<("\n MONDAY");
+		break;
+	case 2:
+		cout<<("\n TUESDAY");
+		break;
+	case 3:
+		cout<<("\n WEDNESDAY");
+		break;
+	case 4:
+		cout<<("\n Thursday");
+		break;
+		case 5:
+		cout<<("\n Friday");
+		break;
+		case 6:
+		cout<<("\n Saturday");
+		break;
+		case 7:
+		cout<<("\n Sunday");
+		break;
+		default:
+			cout<<("\n Invalid choice");
+	}
+	cout<<endl;
+system("pause");
+}
