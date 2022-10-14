@@ -1,0 +1,52 @@
+Write a C++ menu driven program that allows a user  to enter  3 numbers and then choose between findings smallest , largest , sum and average . Use else if statement to determine what action to take.
+#include<iostream>
+#include<string>
+using namespace std;
+void main () { 
+int a,b,c,choice,sum;
+float avg;
+
+cout<<("Enter 3 Numbers: ");
+cin >>a;
+cin >>b;
+cin >>c;
+
+cout<<"a is: " <<a<< " B is: " <<b<< " C is:" <<c<<endl;
+cout<<"\n 1:largest, 2:smallest, 3:sum, 4:average ";
+
+cin >> choice;
+
+if (choice == 1) {
+if (a > b && a > c) {
+cout<<(" A is the largest number");
+}
+else if (b > a && b > c) {
+cout <<("B is the largest number");
+}
+else if (c > a && c > b) {
+cout<<(" C is the largest number");
+}
+}
+else if (choice == 2) {
+if (a < b && a < c) {
+cout <<("A is the smallest number");
+}
+else if (b < a && b < c) {
+cout<<("B is the smallest number");
+}
+else if (c < a && c < b) {
+cout <<("C is the smallest number");
+}
+}
+else if(choice==3) { sum= a+b+c;
+
+cout <<("The sum of three numbers ")<<sum<<endl;
+}
+else if (choice == 4) { avg=a+b+c/3;
+cout <<("The average of three numbers ") <<avg<<endl;
+}else{
+cout<<("Invalid Input");
+}
+
+	system("pause");
+}
