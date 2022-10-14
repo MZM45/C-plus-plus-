@@ -1,0 +1,13 @@
+Write a C++ program to take input from user and find whether it’s even or odd.
+#include<iostream>
+using namespace std;
+void main () { 
+	int data;
+
+
+	cout<<("Enter any number:");
+	cin>>data;
+	if (data%2==0)
+	{cout<<("Your number is even \n");}
+	else {cout<<("\n Number is odd \n");}
+system("pause");
