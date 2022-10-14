@@ -1,0 +1,16 @@
+Write a C++ Program to check leap year using conditional operator. Leap years are years where an extra, or intercalary, day is added to the end of the shortest month, February. The intercalary day, February 29, is commonly referred to as leap day. Leap years have 366 days instead of the usual 365 days and occur almost every four years. 
+#include<iostream>
+using namespace std;
+void main () { 
+int year;
+
+
+cout<<("Enter year:");
+	cin>>year;
+	if(year%4==0 || year%400==0)
+	{cout<<("it is a leap year");}
+	else { cout<<("its not a leap year \n");}
+	cout<<endl;
+system("pause");
+}
+
