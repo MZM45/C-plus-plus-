@@ -1,0 +1,26 @@
+\\Take input positive and negative both numbers from the user and Write a program to find the sum of only positive numbers using while loop. 
+
+\\Code:
+#include <iostream>
+using namespace std;
+void main() { 
+
+	int a;
+	int sum=0;
+	
+	cout<<"  \n enter number \n";
+	cin>>a;
+	cout<<endl;
+	while(a>=0)
+	{
+	
+	sum=sum+a;
+	cin>>a;
+	
+	}
+	cout<<"The Sum is: "<<sum<<endl;
+	system("pause");
+
+
+
+}
