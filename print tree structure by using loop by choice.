@@ -1,0 +1,33 @@
+\\Write a program to print tree structure by using loop by choice.
+  \\                         x
+    \\                      xx
+      \\                   xxx
+        \\                xxxx
+          \\             xxxxx
+            \\              xx
+              \\            xx
+                \\          xx
+                  \\        xx
+
+
+\\Code:
+#include <iostream>
+using namespace std;
+void main(){ 
+
+	for(int i=1; i<=9;i++){
+	if(i<6){
+		int j=0;
+		while(j<i){
+			cout<<"X";
+			j++;
+		}
+		cout<<endl;
+	} else {
+		cout<<"xx"<<endl;
+	}
+	
+	}
+	system("pause");
+}
+
