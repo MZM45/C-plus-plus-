@@ -1,0 +1,18 @@
+\\Write a program that receives start value and end value then displays series of numbers from start to end value inclusive. Use do while to make sure user input smallest value first.
+\\Code:
+#include <iostream>
+using namespace std;
+int main()
+{ 
+	int  data1,data2;
+	cout<<"input first value: ";
+	cin>>data1;
+	cout<<"input last value: ";
+	cin>>data2;
+	for(int i=data1+1; i<data2; i++)
+	{cout<<i<<endl;
+	}
+
+
+system("pause");
+}
