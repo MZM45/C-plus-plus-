@@ -1,0 +1,21 @@
+\\Write a program to find the sum of first n Natural Numbers Positive integers such as 1, 2, 3…… n is known as natural numbers using for loop also print negine number series of number 1 to 100.
+\\Code:
+#include <iostream>
+using namespace std;
+void main() { 
+
+	int sum=0;
+	int num;
+	cout<<"Enter number:";
+	cin>> num;
+
+	for(int i=0; i<=num;i=i++)	
+	{
+	sum=sum+i;
+	
+	}
+	cout<<"The total is: "<<sum<<endl;
+	cout<<endl;
+	system("pause");
+
+}
