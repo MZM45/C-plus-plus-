@@ -1,0 +1,35 @@
+Write a C program to search an element entered by user from array and display the searched element and its location.
+#include <iostream>
+using namespace std;
+void main()
+{
+	int y;
+	int i[5];
+	int a;
+	int b;
+	int x=0;
+    int find=0;
+	cout<<"Enter the element of an array : \n";
+	for (a=0;a<5;a++)
+	{
+	cin>>i[a];
+	}
+	
+	cout<<"Elements of an array are : \n";
+	while (x<5)
+	{cout<<x[i]<<endl;
+	x=x++;
+	}
+	cout<<"Enter the  element you need to find in an array : \n";
+	cin>>y;
+	for (b=0;b<5;b++)
+	{if (i[b]==y){
+		find=1;
+		cout<<y<<" is at the position : "<<b<<endl;
+	}
+	}
+	if (find == 0 ){cout<<"Element not found \n";
+	}
+
+	system("pause");
+}
