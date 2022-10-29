@@ -1,0 +1,28 @@
+\\Write a C++ program that asks user to enter 10 integer values. Store those values in one dimensional array. Create another one dimensional array of same size, and store the values of first array in reverse order. Print the result on Screen
+#include <iostream>
+using namespace std;
+void main()
+{
+	int x=0;
+	int i[10];
+	cout<<"Enter the elements of an array : \n";
+	for (int a=0;a<10;a++)
+	{
+	cin>>i[a];
+	}
+	int j[10];
+	for (int b=9;b>=0;b--)
+	{j[b]=i[x];
+	x++;}
+	cout<<" Original Array: \n";
+	for (int z=0;z<10;z++)  
+	{cout<<i[z]<<",";
+	}
+
+	cout<<"\n Reverse Array: \n";
+	for (int s=0;s<10;s++)
+	{cout<<j[s]<<",";
+	}
+	system("pause");
+}
+
