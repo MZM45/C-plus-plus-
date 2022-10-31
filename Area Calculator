@@ -1,0 +1,56 @@
+cout<<("Enter \n 1 to Calculate Area of Square \n 2 to Calculate Area of Rectangle \n 3 to Calculate Area of Circle \n 4 to Calculate Area of Triangle \n 5 to Calculate Area of parallelogram \n 6 to Calculate Area of trapezoid\n");
+	cin>>cho;
+		
+		if(cho==1)
+		{cout<<" \nEnter Value of A ";
+	cin>>a;
+	ans=a*a;
+	cout<<"answer:"<<ans;
+	cout<<"\nDo you want to continue? press 1 for yes 0 for No:\n";
+	cin>>choice;}
+		else if(cho==2)
+			{cout<<"Enter Value of W";
+		cin>>a;
+		ans=1*a;
+		cout<<"Answer is:"<<ans;
+		cout<<"\nDo you want to continue? press 1 for yes 0 for No:\n";
+	cin>>choice;}
+		else if (cho==3)
+			{cout<<"Enter Value of R";
+			cin>>a;
+			ans=3.142*a*2;
+			cout<<"Answer is:"<<ans;
+			cout<<"\nDo you want to continue? press 1 for yes 0 for No:\n";
+	cin>>choice;}
+		else if (cho==4)
+		{cout<<"\nEnter Value of B and H\n";
+		cin>>a;
+		cin>>b;
+		ans=1/2*a*b;
+		cout<<"Answer is:"<<ans;
+		cout<<"\nDo you want to continue? press 1 for yes 0 for No:\n";
+	cin>>choice;}
+		else if (cho==5)
+		{cout<<"Enter Value of B and H";
+		cin>>a;
+		cin>>b;
+		ans=a*b;
+		cout<<"Answer is :"<<ans;
+		cout<<"\nDo you want to continue? press 1 for yes 0 for No:\n";
+	cin>>choice;}
+		else if (cho==6)
+		{cout<<"Enter Value of A,B and H";
+		cin>>a;
+		cin>>b;
+		cin>>h;
+		ans=1/2*(a=b)*h;
+		cout<<"Answer is:"<<ans;
+		cout<<"\nDo you want to continue? press 1 for yes 0 for No:\n";
+	cin>>choice;}
+		else 
+			{cout<<"Invalide Choice";
+			cout<<"\nDo you want to continue? press 1 for yes 0 for No:\n";
+	cin>>choice;}
+	}while(choice==1);
+system("pause");
+}
