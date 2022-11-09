@@ -1,0 +1,206 @@
+#include <iostream>
+using namespace std;
+
+int insert(int value);
+int search(int value);
+int update(int index);
+int del(int index);
+
+void display();
+int size();
+bool isEmpty();
+bool isFull();
+
+int arr[5];
+int i = -1;
+int main() {
+	int choice;
+	char cont = 'y';
+	cout << "CRUDS Operation: \n";
+
+	while(cont == 'y'){
+
+	cout << "Press 1 to insert values into array\n";
+	cout << "Press 2 to Search in array\n";
+	cout << "Press 3 to Update any value in array\n";
+	cout << "Press 4 to Delete any value in array\n";
+	cout << "Press 5 to Display values in array\n";
+	cout << "Press 6 to get the size of array\n";
+
+	cin >> choice;
+
+	if (choice == 1) {
+		int value; 
+		cout << "Insert Value into Array\n";
+		cin >> value;
+		insert(value);
+
+	}
+	else if (choice == 2) {
+		int value;
+		cout << "Enter The value you want to search: ";
+		cin >> value;
+		int pos = search(value);
+
+		cout << "Value found at index number: " << pos << endl;
+
+	}
+	else if (choice == 3) {
+
+		int value;
+		cout << "Enter The value you want to update: ";
+		cin >> value;
+		int pos = search(value);
+
+		int updateVal = update(pos);
+
+		cout << value << " Updated with " << updateVal << endl;
+
+	}
+	else if (choice == 4) {
+
+		int value;
+		cout << "Enter The value you want to delete: ";
+		cin >> value;
+		int pos = search(value);
+
+		del(pos);
+
+		cout << value << " deleted from array";
+
+	}
+	else if (choice == 5) {
+
+		display();
+
+	}
+	
+	else if(choice == 6) {
+
+		int sizeOfArray = size();
+
+		cout << "The size of array is: " << sizeOfArray;
+
+	}
+	
+	cout << "\nPress y to continue or press any other key to end the program: ";
+	cin >> cont;
+
+	}
+
+	return 0;
+}
+
+int insert(int value) {
+
+	if (isFull()) {
+		cout << "Array Overflow";
+	}
+	else {
+		i++;
+		arr[i] = value;
+	}
+
+	return 0;
+
+}
+
+int search(int value) {
+
+	bool found = false;
+	int index = -1;
+
+	if (isEmpty()) {
+		cout << "Array Underflow";
+	}
+	else {
+		
+		for (int j = 0; j <= i; j++) {
+
+			if (arr[j] == value) {
+				found = true;
+				index = j;
+				break;
+			}
+			
+
+		}
+		return index;
+	}
+
+}
+
+int update(int index) {
+
+	int newVal;
+	cout << "Enter updated value: ";
+	cin >> newVal;
+
+	arr[index] = newVal;
+
+	return arr[index];
+
+}
+
+int del(int index) {
+
+	for (int j = index; j <= i; j++) {
+
+		arr[j] = arr[j + 1];
+
+	}
+	arr[i] == NULL;
+	i--;
+
+	return 0;
+}
+
+void display() {
+	if (isEmpty()) {
+		cout << "Array underflow\n";
+	}
+	else {
+		cout << "[";
+		for (i = 0; i < 5; i++) {
+			cout << arr[i] << ", ";
+		}
+		cout << "]";
+
+	}
+
+}
+
+int size() {
+
+	if (isEmpty()) {
+		cout << "Array Underflow";
+	}
+	else {
+		return i + 1;
+	}
+
+	
+
+}
+
+bool isEmpty() {
+
+	if (i == -1) {
+		return true;
+	}
+	else {
+		return false;
+	}
+
+}
+
+bool isFull() {
+
+	if (i == 4) {
+		return true;
+	}
+	else {
+		return false;
+	}
+
+}
