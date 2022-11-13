@@ -1,0 +1,44 @@
+#include <iostream>
+using namespace std;
+void main() {
+int arr[3][3];
+	int trans[3][3];
+	int i, j;
+
+	cout << "Enter elements of array \n";
+	for (i = 0; i < 3; i++) {
+
+		for (j = 0; j < 3;j++) {
+			cin >> arr[i][j];
+		}
+
+	}
+
+	for (i = 0; i < 3; i++) {
+
+		for (j = 0; j < 3;j++) {
+			cout << arr[i][j] << " ";
+		}
+		cout << endl;
+	}
+
+	cout << "Transpose: \n";
+
+	for (i = 0; i < 3;i++) {
+
+		for (j = 0;j < 3;j++) {
+			trans[j][i] = arr[i][j];
+		}
+
+	}
+	for (i = 0; i < 3; i++) {
+
+		for (j = 0; j < 3;j++) {
+			cout << trans[i][j] << " ";
+		}
+		cout << endl;
+	}
+
+
+	system("pause");
+}
