@@ -1,0 +1,95 @@
+CODE:
+#include <iostream>
+#include <string>
+using namespace std;
+int AGE(int DOBY);
+int takeinput();
+int displaydata();
+int elegibility();
+int DOBD[10], DOBM[10], DOBY[10], age[10], x = 0;
+string name[10], fname[10], eligibility[10];
+
+void main()
+{
+	cout << "School Admin Staff" << endl;
+	cout << "\nPlease Enter 10 entries of Students' names, Their fathers' names and their Date Of Birth" << endl;
+	takeinput();
+	cout << "\nThe Data Stored is : " << endl;
+	displaydata();
+	cout << "\n For Eligibilty of every Student press any key. ";
+	system("pause");
+	cout << "\nThe Elegibility of every Student entry-wise is : " << endl;
+	elegibility();
+}
+int AGE(int DOBY)
+{
+	int age;
+	age = 2022 - DOBY;
+	return age;
+}
+int takeinput()
+{
+	char ec;
+	for (int i = 0; i < 10; i++)
+	{
+		cout << "\nPlease Enter the Name of the Student : ";
+		cin >> name[i];
+		cout << "\nPlease Enter the Name of the Student's Father : ";
+		cin >> fname[i];
+		cout << "\nPlease Enter the Date of Birth of in this Format 'DD' 'MM' 'YYYY' " << endl;
+		cout << "\nFirst Enter Date : ";
+		cin >> DOBD[i];
+		cout << "\nNow  Enter Month : ";
+		cin >> DOBM[i];
+		cout << "\nLastly, Enter Year : ";
+		cin >> DOBY[i];
+		age[i] = AGE(DOBY[i]);
+		x++;
+		cout << "\nWould like to add more entries? (Maximum 10)." << endl << "For continuing adding entries press 'Y' and for ending adding entries press 'N' : ";
+		cin >> ec;
+		if (ec == 'Y') {
+			continue;
+		}
+		else if (ec == 'N') {
+			elegibility();
+			break;
+		}
+	}
+	return 0;
+}
+int displaydata()
+{
+	for (int i = 0; i < x; i++)
+	{
+		cout << endl;
+		cout << "Student Name : " << name[i] << " | Father Name: " << fname[i] << " | Date of Birth: " << DOBD[i] << "/" << DOBM[i] << "/" << DOBY[i];
+		cout << endl;
+	}
+	return 0;
+
+}
+int elegibility()
+{
+	for (int i = 0; i < x; i++)
+	{
+		cout << "\nStudent Name : " << name[i] << " , Age : " << age[i] << " is ";
+		if (age[i] >= 2 && age[i] <= 5)
+		{
+			cout << "eligible for Pre-Primary section.";
+		}
+		else if (age[i] >= 5 && age[i] <= 13)
+		{
+			cout << "eligible for Primary section.";
+		}
+		else if (age[i] >= 13 && age[i] <= 16)
+		{
+			cout << "eligible for Secondary section.";
+		}
+		else {
+			cout << "ineligible due to over-age or invalid input.";
+		}
+		cout << endl;
+	}
+	return 0;
+}
+
