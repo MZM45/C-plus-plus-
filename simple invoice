@@ -1,0 +1,34 @@
+\\Mr. A purchases online grocery from ABC superstore, ABC superstore offers free delivery on orders above Rs. 1000, otherwise they charge Rs. 150 as delivery charges. Write a function to calculate total delivery charges
+#include<iostream>
+using namespace std;
+int sum = 0;
+int order();
+int main()
+{   cout<<order();
+    cout << endl;
+	system("pause");
+}
+
+int order()
+{
+	int charges;
+		cout << "Enter Price of Product: \n";
+		cin >> charges;
+	if (charges >= 1000)
+	{
+		cout << "Free Delivery!!!";
+		cout << endl;
+		cout << "MR.A MAKES A PURCHASE OF :" << charges;
+		cout << endl;
+	}
+
+	else
+	{
+		cout << "DELIVERY CHARGES = 150 . ";
+		cout << endl;
+		cout << "TOTAL=price + 150 DELIVERY CHARGES = " << charges + 150;
+		cout << endl;
+	}
+	system("pause");
+	return sum;
+}
