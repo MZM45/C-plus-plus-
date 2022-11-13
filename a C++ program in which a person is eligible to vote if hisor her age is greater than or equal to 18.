@@ -1,0 +1,31 @@
+#include<iostream> 
+using namespace std;
+
+int vote(int a)
+{
+	if (a > 18 || a == 18)
+	{
+		cout << "PERSON IS ELIGIBLE TO VOTE . ";
+		cout << endl;
+	}
+
+	else
+	{
+		cout << "PERSON IS NOT ELIGIBLE TO VOTE . ";
+		cout << endl;
+	}
+	return 0;
+}
+
+int main()
+{
+	int age;
+
+	cout << "ENTER PERSON's AGE : ";
+	cin >> age;
+	cout << endl;
+	vote(age);
+	cout << endl;
+
+	system("pause");
+}
