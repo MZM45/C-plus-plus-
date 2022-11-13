@@ -1,0 +1,98 @@
+\\using diff functions
+#include <iostream>
+#include <math.h>
+using namespace std;
+void Add(),sub(),mul();
+void power();
+void div();
+int a,b,ans,choice1;
+
+void main(){
+int a,b,choice;
+do{
+cout<<"Press 1 for Addition: \n";
+cout<<"Press 2 for Subtraction: \n";
+cout<<"Press 3 for Multiplication: \n";
+cout<<"Press 4 for Division: \n";
+cout<<"Press 5 for power rule: \n";
+cin>>choice;
+if (choice==1){
+Add();
+cout<<"press 6 to repeat";
+cin>>choice1;}
+else if (choice==2){
+sub();
+cout<<"press 6 to repeat";
+cin>>choice1;}
+else if (choice==3){
+mul();
+cout<<"press 6 to repeat";
+cin>>choice1;}
+else if (choice==4){
+div();
+cout<<"press 6 to repeat";
+cin>>choice1;}
+else if (choice==5){
+power();
+cout<<"press 6 to repeat";
+cin>>choice1;}
+else
+	cout<<"Wrong Input";}
+while(choice1==6);
+
+
+
+
+system("pause");
+}
+void Add(){
+cout<<"Enter First Number:\n";
+cin>>a;
+cout<<"Enter Second Number: \n";
+cin>>b;
+ans=a+b;
+cout<<"Sum is:"<<ans<<endl;
+
+system("pause");
+}
+void sub(){
+cout<<"Enter First Number:\n";
+cin>>a;
+cout<<"Enter Second Number: \n";
+cin>>b;
+ans=a-b;
+cout<<"ans is:"<<ans<<endl;
+
+system("pause");
+}
+void mul(){
+cout<<"Enter First Number:\n";
+cin>>a;
+cout<<"Enter Second Number: \n";
+cin>>b;
+ans=a*b;
+cout<<"Ans is:"<<ans<<endl;
+
+system("pause");
+}
+void div(){
+float ans;
+cout<<"Enter First Number:\n";
+cin>>a;
+cout<<"Enter Second Number: \n";
+cin>>b;
+ans=a/b;
+cout<<"ans is:"<<ans<<endl;
+
+system("pause");
+}
+void power(){
+int x,y;
+cout<<"Enter First Number:\n";
+cin>>x;
+cout<<"Enter the value of power operand : \n";
+cin>>y;
+ans= pow(double(x),double(y));
+cout<<"Sum is:"<<ans<<endl;
+system("pause");
+}
