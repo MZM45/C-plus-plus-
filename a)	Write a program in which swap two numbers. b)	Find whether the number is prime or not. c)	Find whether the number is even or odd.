@@ -1,0 +1,84 @@
+#include<iostream>
+using namespace std;
+void swap()
+{
+	int num1, num2, temp;
+	cout<<"Enter first number: ";
+	cin>>num1;
+	cout<<"Enter Second Number: ";
+	cin>>num2;
+	
+	cout<<"Before swapping numbers are: "<<endl<<num1<<endl<<num2;
+	temp = num1;
+	num1 = num2;
+	num2 = temp;
+	
+	cout<<"\nAfter swapping numbers are:\n "<<endl<<num1<<endl<<num2;
+	cout<<endl;
+	
+}
+
+void prime()
+{
+	system("CLS");
+	int num, i, check = 0;
+
+    cout << "Enter any number: "; 
+	cin>>num;
+    
+    for (i = 1; i <= num; i++)
+    {
+        if (num % i == 0)
+        {
+           check++;
+        }
+    }
+    if (check == 2)
+    {
+       cout << "it's a Prime number" << endl;
+    }
+    else
+    {
+         cout << "it's a Composite number" << endl; 
+    }	
+}
+
+void even_odd()
+{
+	system("CLS");
+	int num1;
+	cout<<"\n\nEnter any number: ";
+	cin>>num1;
+	
+	if(num1%2 == 0)
+	{
+		cout<<"\n it's an even number"<<endl;
+	}
+	else
+	{
+		cout<<"\n it's an odd number"<<endl;
+	}
+}
+
+int main()
+{
+	int choice;
+	cout<<"\n Press 1 for Swapping the numbers";
+	cout<<"\n Press 2 for Finding Prime Number: ";
+	cout<<"\n Press 3 for findig whether number is even or odd"<<endl;
+	cin>>choice;
+	
+	switch(choice)
+	{
+		case 1:
+			swap();
+			break;
+		case 2:
+			prime();
+			break;
+		case 3:
+			even_odd();
+			break;
+	}
+	system("pause");
+}
