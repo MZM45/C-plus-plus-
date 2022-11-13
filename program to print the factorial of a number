@@ -1,0 +1,28 @@
+#include<iostream>
+using namespace std;
+
+int factorial(int a)
+{
+	int prod = 1;
+
+	for (int i = a; i >= 1; i--)
+	{
+		prod = prod * i;
+	}
+	return prod;
+}
+
+int main()
+{
+	int num;
+
+	cout << "ENTER A NUMBER YOU WANT TO FIND A FACTORIAL OF : ";
+	cin >> num;
+	cout << endl;
+
+	cout << "FACTORIAL OF " << num << " IS : " << factorial(num);
+	cout << endl;
+
+	system("pause");
+
+}
