@@ -1,0 +1,30 @@
+#include<iostream> 
+using namespace std;
+
+int MSD(int a)
+{
+	int x;
+	x = (a/100) % 10;
+	return x;
+}
+
+int LSD(int a)
+{
+	int x;
+	x = (a) % 10;
+	return x;
+}
+
+int main()
+{
+	int num;
+
+	cout << "ENTER A THREE NUMBER DIGIT : ";
+	cin >> num;
+	cout << endl;
+
+	cout << "THE most significant digit is: " << MSD(num) << " THE least significant digit is: " << LSD(num);
+	cout << endl;
+
+	system("pause");
+}
