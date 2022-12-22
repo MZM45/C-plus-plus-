@@ -1,0 +1,39 @@
+that calculate price of purchased fruits. • A shopkeer supplies following fruits. • Apple, Banana, Mango, Peach and Grapes • Unit of each fruit per kg is: • Apple = 160 • Banana = 120 • Mango = 110 • Peach = 100 • Grapes = 130 • Ask user to enter purchased quantity of each fruits. Store values in variables. • Write a function Cal_Pric (int, int, int& total) that calculate the price for each fruit. 
+#include<iostream>
+using namespace std;
+int total1, total2, total3, total4, total5 = 0;
+int apple = 160, banana = 120, mango = 110, peach = 100, grapes = 130;
+int a, b, m, p, g;
+void price()
+{
+cout << "Price of Apple: ";
+total1 = (apple*a);
+cout << total1<<endl;
+cout << "Price of Banana: ";
+total2 = (banana*b);
+cout << total2 << endl;
+cout << "Price of Mango: ";
+total3 = (mango*m);
+cout << total3 << endl;
+cout << "Price of Peach: ";
+total4 = (peach*p);
+cout << total4 << endl;
+cout << "Price of Grapes: ";
+total5 = (grapes*g);
+cout << total5 << endl;
+}
+int main()
+{
+cout << "How many apples would you like to purchase :";
+cin >> a;
+cout << "How many banana would you like to purchase :";
+cin >> b;
+cout << "How many mango would you like to purchase :";
+cin >> m;
+cout << "How many peach would you like to purchase :";
+cin >> p;
+cout << "How many grapes would you like to purchase :";
+cin >> g;
+price();
+system("pause");
+} 
