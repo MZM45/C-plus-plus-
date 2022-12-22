@@ -1,0 +1,20 @@
+Take the power and the base from the user in the main function. • Calcuate the power of the base in a user defined function “MY_POWER” by passingpower and base from the main ( ) to the MY_POWER function. • Calculated value must return from the function to the main and display there
+#include<iostream>
+using namespace std;
+int power(int& a, int& b)
+{
+int power2;
+power2 = pow(b, a);
+cout << "The result of power "<<a<<" for base "<<b<<" is " << power2 << endl;
+return power2;
+}
+void main()
+{
+int a, b;
+cout << "Enter the power :";
+cin >> a;
+cout << "\nEnter the base :";
+cin >> b;
+power(a, b);
+system("pause");
+}
