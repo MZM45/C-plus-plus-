@@ -1,0 +1,41 @@
+Program that contains four user defined function(s) plus(int, int, int&), minus(int, int, int&), multiply(int, int, int&), divide(int, int, float&). • In main() function: o Get two numbers from user o Call four user defined fuctions o Variable to contain result should be decleared in main function and passed as reference to the user defined function. o Calculation must be done in the user defined function according to their names, e.g. plus() should perfom addition of the two variables. Variable to contain result shoud be updated in user defined function. o Print the result from main()
+#include<iostream>
+using namespace std;
+void add(float &a, float &b, float &sum)
+{
+sum = a + b;
+}
+void min(float &a, float &b, float &subtraction)
+{
+subtraction = a - b;
+}
+void mul(float &a, float &b, float &multiply)
+{
+multiply = a*b;
+}
+void divide(float &a, float &b, float &division)
+{
+division = a / b;
+}
+void main()
+{
+float sum, subtraction, multiply, division;
+float a, b;
+cout << "Enter number 1 :";
+cin >> a;
+cout << "Enter number 2 :";
+cin >> b;
+cout << "The sum of the numbers is :";
+add(a, b, sum);
+cout << sum<<endl;
+cout << "The subtraction of the numbers is :";
+min(a, b, subtraction);
+cout << subtraction << endl;
+cout << "The multiplication of the numbers is :";
+mul(a, b, multiply);
+cout << multiply << endl;
+cout << "The division of the numbers is :";
+divide(a, b, division);
+cout << division << endl;
+system("pause");
+}
