@@ -1,0 +1,21 @@
+calculate number of elements
+#include <iostream>
+#include <cstring>
+using namespace std;
+void main()
+{
+	char a[100];
+	char *ptr_a;
+	ptr_a = a;
+	int l = 0;
+	cout << "Enter a String to count the number of elements including spaces : ";
+	cin.getline(a, 100);
+	cout << endl;
+	while (*ptr_a != '\0')
+	{
+		l++;
+		ptr_a++;
+	}
+	cout << "The length of the String is = : " << l<< endl << endl;
+	system("pause");
+}
