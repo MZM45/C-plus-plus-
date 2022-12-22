@@ -1,0 +1,28 @@
+Write a program that compare two strings and prints the shorter one. It prints equal if both strings are same.
+#include <iostream>
+#include<string>
+using namespace std;
+
+void main() {
+    string str1,str2;
+	int temp1,temp2;
+	cout<<"Enter first string"<<endl;
+	cin>>str1;
+	cout<<"Enter second string"<<endl;
+	cin>>str2;
+    cout << "String1 length = " << str1.size()<<endl;
+	cout << "String2 Length = " << str2.size()<<endl;
+	temp1=str1.size();
+	temp2=str2.size();
+	if(temp1>temp2){
+		cout<<"string 2 "<<str2<<" is shorter"<<endl;
+	}
+	else if (temp2>temp1){
+	cout<<"string 1 "<<str1<<" is shorter"<<endl;
+	}
+	else 
+	{
+		cout<<"both strings are same in length"<<endl;
+	}
+  system("pause");
+}
