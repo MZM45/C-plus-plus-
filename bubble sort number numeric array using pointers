@@ -1,0 +1,35 @@
+bubble sort number numeric array using pointers
+#include <iostream>
+using namespace std;
+void main()
+{
+	int a[1000], temp, *ptr_a;
+	ptr_a = a;
+	int x;
+	cout << "Input what size of Numeric Array you want : ";
+	cin >> x;
+	for (int i = 0; i < x; i++)
+	{
+		cout << "\nEnter No. " << i + 1 << "element : ";
+		cin >> a[i];
+	}
+	for (int i = 0; i < x; i++)
+	{
+		for (int j = i + 1; j < x; j++)
+		{
+			if (*(ptr_a + j) < *(ptr_a + i) )
+			{
+				temp = *(ptr_a + j);
+				*(ptr_a + j) = *(ptr_a+i);
+				*(ptr_a + i) = temp;
+			}
+		}
+	}
+	cout << "\nThe list after being sorted is : ";
+	for (int i = 0; i < x;i++)	
+	{
+		cout  << *(ptr_a + i) << ", ";
+	}
+	cout << "\n" << endl;
+	system("pause");
+}
