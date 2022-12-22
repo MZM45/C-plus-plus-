@@ -1,0 +1,25 @@
+Write a structure named triangle which has 3 points p1 , p2 and p3, program takes input and determines if it is a right-angle or not
+#include <iostream>
+using namespace std;
+void main()
+{
+	struct triangle {
+		double a;
+		double b;
+		double c;
+};
+	triangle sides;
+	cout << "ENTER THE SIDE 1" << endl;
+	cin >> sides.a;
+	cout << "ENTER THE SIDE 2" << endl;
+	cin >> sides.b;
+	cout << "ENTER THE SIDE 3" << endl;
+	cin >> sides.c;
+ if(sides.a*sides.a==sides.b*sides.b+sides.c*sides.c ||sides.b*sides.b==sides.c*sides.c+sides.a*sides.a || sides.c*sides.c==sides.a*sides.a+sides.b*sides.b)
+ {
+  cout<<"The Triangle is Right angled\n";}
+ else
+ {cout<<"Not right angle";}
+	system("pause");
+}
+
