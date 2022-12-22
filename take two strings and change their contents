@@ -1,0 +1,26 @@
+take two strings and change their contents
+#include <iostream>
+#include <string>
+using namespace std;
+void main()
+{
+	string a, b, temp;
+	string* ptr_a;
+	string*	ptr_b;
+	ptr_a = &a;
+	ptr_b = &b;
+	do {
+		cout << "\nEnter String A of atleast 6 characters.";
+		getline(cin, *ptr_a);
+	} while (a.length() < 6);
+	do {
+		cout << "\nEnter String B of atleast 6 characters.";
+		getline(cin, *ptr_b);
+	} while (b.length() < 6);
+	temp = *ptr_a;
+	*ptr_a = *ptr_b;
+	*ptr_b = temp;
+	cout << "\nString A is now : " << *ptr_a;
+	cout << "\nString B is now : " << *ptr_b;
+	system("pause");
+}
