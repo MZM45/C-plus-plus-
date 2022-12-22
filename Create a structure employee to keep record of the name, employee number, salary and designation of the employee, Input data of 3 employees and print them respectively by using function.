@@ -1,0 +1,43 @@
+Create a structure employee to keep record of the name, employee number, salary and designation of the employee, Input data of 3 employees and print them respectively by using function.
+#include <iostream>
+#include <string>
+using namespace std;
+struct record
+{
+	string name, designation;
+	int number, salary;
+};
+record er[3];
+void print();
+void input();
+void main() {
+	cout << "Input Employees Details";
+	input();
+	cout << "Now Displaying all Employees Details ====>";
+	print();
+	system("pause");
+}
+void input() {
+	for (int i = 0; i < 3; i++)
+	{
+		cout << "\nEnter Employee's name: ";
+		getline(cin >> ws, er[i].name);
+		cout << "\nEnter Employee's number: ";
+		cin >> er[i].number;
+		cout << "\nEnter Employee's salary: ";
+		cin >> er[i].salary;
+		cout << "\nEnter Employee's designation: ";
+		getline(cin >> ws, er[i].designation);
+	}
+}
+void print() {
+	for (int i = 0; i < 3; i++)
+	{
+		cout << "\n------------------------------------------------";
+		cout << "\nname: \t" << er[i].name;
+		cout << "\nEmployee's number: \t" << er[i].number;
+		cout << "\nEmployee's salary: \t" << er[i].salary;
+		cout << "\nEmployee's designation: \t" << er[i].designation;
+	}
+	system("pause");
+}
