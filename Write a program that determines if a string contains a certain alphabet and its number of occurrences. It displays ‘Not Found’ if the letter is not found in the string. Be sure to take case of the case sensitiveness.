@@ -1,0 +1,24 @@
+Write a program that determines if a string contains a certain alphabet and its number of occurrences. It displays ‘Not Found’ if the letter is not found in the string. Be sure to take case of the case sensitiveness.
+#include<iostream>
+#include<string>
+using namespace std;
+void main(){
+	string name;
+	char check;
+	int counter=0;
+	cout<<"Enter string ";
+	cin>>name;
+	cout<<"Enter character to check";
+	cin>>check;
+	for (int i = 0; i < name.size(); i++)
+    {
+        if (name[i] ==  check)
+        {
+            ++ counter;
+        }
+    }
+
+    cout << "Number of " << check << " = " << counter<<endl;
+
+system("pause");
+}
