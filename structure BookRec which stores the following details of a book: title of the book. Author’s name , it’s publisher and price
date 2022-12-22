@@ -1,0 +1,33 @@
+structure BookRec which stores the following details of a book: title of the book. Author’s name , it’s publisher and price
+: #include <iostream>
+#include <string>
+using namespace std;
+struct bookRec {
+string name, author, pub;
+float price;
+}a[3];
+int main() {
+cout << "-----Enter Book Details-----\n";
+for (int i = 0; i < 3; i++)
+{
+cout << "\nEnter Book's name: ";
+getline(cin >> ws, a[i].name);
+cout << "Enter Author's name: ";
+getline(cin >> ws, a[i].author);
+cout << "Enter Publisher's name: ";
+getline(cin >> ws, a[i].pub);
+cout << "Enter Price: ";
+cin >> a[i].price;
+}
+cout << "\n\n-----Displaying Book Records-----\n";
+for (int i = 0; i < 3; i++)
+{
+cout << "\nBook's name: " << a[i].name;
+cout << "\nBook's Author's Name: " << a[i].author;
+cout << "\nBook's Publisher's Name: " << a[i].pub;
+cout << "\nBook's Price: " << a[i].price << endl;
+}
+
+system("pause");
+}
+
