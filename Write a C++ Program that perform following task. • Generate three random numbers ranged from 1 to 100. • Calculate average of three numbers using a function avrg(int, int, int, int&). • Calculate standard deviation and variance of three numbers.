@@ -1,0 +1,42 @@
+Write a C++ Program that perform following task.
+• Generate three random numbers ranged from 1 to 100.
+• Calculate average of three numbers using a function avrg(int, int, int, int&).
+• Calculate standard deviation and variance of three numbers.
+#include<iostream>
+#include<cstdlib>
+#include<cmath>
+using namespace std;
+int average(int &num1, int &num2, int &num3)
+{
+float avg = (num1 + num2 + num3) / 3;
+return avg;
+}
+int deviation(float avg, int num1, int num2, int num3)
+{
+float numerator = pow(num1 - avg, 2) + pow(num2 - avg, 2) + pow(num3 - avg, 2);
+float fraction = numerator / 3;
+float answer1 = pow(fraction, 0.5);
+return answer1;
+}
+int variance(float avg, int num1, int num2, int num3)
+{
+float numerator = pow(num1 - avg, 2) + pow(num2 - avg, 2) + pow(num3 - avg, 2);
+float answer2 = numerator / 3;
+return answer2;
+}
+void main()
+{
+int num1 = 1 + rand() % 100;
+cout << "The first number is "<<num1 << endl;
+int num2 = 1 + rand() % 100;
+cout << "The second number is "<<num2 << endl;
+int num3 = 1 + rand() % 100;
+cout << "The third number is "<<num3 << endl;
+float avg = average(num1, num2, num3);
+cout << "The average is " << avg << endl;
+float answer1 = deviation(avg, num1, num2, num3);
+cout << "The deviation is " << answer1 << endl;
+float answer2 = variance(avg, num1, num2, num3);
+cout << "The variance is " << answer2 << endl;
+system("pause");
+}
