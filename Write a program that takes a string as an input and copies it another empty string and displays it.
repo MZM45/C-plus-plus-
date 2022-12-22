@@ -1,0 +1,19 @@
+Write a program that takes a string as an input and copies it another empty string and displays it.
+#include<iostream>
+#include<string>
+using namespace std;
+void main(){
+	string str1;
+	string temp;
+
+	cout << "Enter string1" << endl;
+	cin >> str1;
+	cout << "Enter string2" << endl;
+	cin >> temp;
+	cout << "string 1 is " << str1 << endl;
+	cout << "string 2 is " << temp << endl;
+	temp = str1;
+	cout << "string 2 is: " << temp << endl;
+
+	system("pause");
+}
