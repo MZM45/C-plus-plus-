@@ -1,0 +1,1763 @@
+#include <iostream>
+#include <string>
+#include <string.h>
+#include<fstream>
+#include<windows.h>
+using namespace std;
+int male2();//filing & initialization//
+int login();
+void signup();
+int male();
+int input();
+int female();
+int female2();//filing//
+int display();
+int display2();
+int female();
+int input2();
+int update();
+int admin();
+int shoporder();//filing userorder//
+int index = 0;
+int sum = 0;
+int sum2 = 0;
+int h = 1;
+bool login1 = false;
+//order arrays//
+struct userorder {
+	int id;
+	string clothtype1;
+	string clothmaterial1;
+	string clothcolor1;
+	string clothsize1;
+	double total = 0;
+}obj3[10];
+//male clothes quantity//
+struct mqty {
+
+	double pantsqty = 100;
+	double shirtsqty = 100;
+	double jacketsqty = 100;
+	double shortsqty = 100;
+	double trouserssqty = 100;
+	double tshirtsqty = 100;
+	double jeansqty = 100;
+}mqto;
+//male clothes//
+struct mcloth {
+	string size;
+	string clothtype;
+	string clothmaterial;
+	string color;
+	double price;
+
+}obj[10];
+//femaleclothes//
+struct fcloth {
+	string size;
+	string clothtype3;
+	string clothmaterial3;
+	string color3;
+
+	double price2;
+}obj2[10];
+struct Fqty {
+
+	double scarfsqty = 100;
+	double shirtsqty = 100;
+	double jacketsqty = 100;
+	double kurtiqty = 100;
+	double frockssqty = 100;
+	double jeansqty = 100;
+	double skirtqty = 100;
+}Fqto;
+//void signup() {
+//
+//	string suser, spass;
+//	system("cls");
+//	cout << "\n\t\t\tEnter Username: ";
+//	cin >> suser;
+//	cout << "\n\t\t\tEnter Password: ";
+//	cin >> spass;
+//
+//	ofstream reg("admin.txt", ios::app);
+//	reg << suser << ' ' << spass << endl;
+//
+//	system("cls");
+//	cout << "\n\tRegisteration succesfull!\n";
+//}
+int login() {
+	int c = 1;
+	int exist = 0;
+	string user, pass, u, p;
+	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+	system("cls");
+	SetConsoleTextAttribute(h, 11);
+	cout << "\n\t\t---------------------------" << endl;
+	SetConsoleTextAttribute(h, 1);
+	cout << "\t\tEnter Username: ";
+	SetConsoleTextAttribute(h, 11);
+	cout << "\n\t\t---------------------------"<<endl;
+	cin >> user;
+	cout << "\n\t\t---------------------------" << endl;
+	SetConsoleTextAttribute(h, 1);
+	cout << "\t\tEnter Password: ";
+	SetConsoleTextAttribute(h, 11);
+	cout << "\n\t\t---------------------------" << endl;
+	cin >> pass;
+
+	ifstream input("admin.txt");
+
+	while (input >> u >> p) {
+		if (u == user && p == pass) {
+			exist = 1;
+		}
+	}
+	input.close();
+
+	if (exist == 1) {
+		system("cls");
+		c == 0;
+		SetConsoleTextAttribute(h, 5);
+		cout << "\t\t\t\t\t===============================================" << endl;
+		SetConsoleTextAttribute(h, 11);
+		cout << "\n\t\t\t\t\t=================Welcome " << user << "================="<<endl;
+		SetConsoleTextAttribute(h, 5);
+		cout << "\n\t\t\t\t\t===============================================" << endl;
+	}
+	else if (exist == 0) {
+		SetConsoleTextAttribute(h, 12);
+		cout << "\n\t\t\tInvalid Credentials!!!\n\n";
+		login();
+	}
+	return c;
+}
+int main()
+{
+	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+	for (int i = 0; i < 30; i++)
+	{
+
+		cout << " ";
+	}
+	for (int i = 0; i < 34; i++)
+	{
+		SetConsoleTextAttribute(h, 14);
+
+		cout << "-";
+	}
+	cout << endl;
+	for (int i = 0; i < 31; i++)
+	{
+		cout << " ";
+	}
+	SetConsoleTextAttribute(h, 12);
+	cout << "=====CLOTH SHOPPING SYSTEM=====" << endl;
+
+	for (int i = 0; i < 30; i++)
+	{
+		cout << " ";
+	}
+	for (int i = 0; i < 34; i++)
+	{
+		SetConsoleTextAttribute(h, 14);
+		cout << "-";
+	}
+	cout << endl;
+	char choose5 = 'y';
+		int choice;
+		do {
+			SetConsoleTextAttribute(h, 11);
+			cout << "\t\t\t--------------------------------------------------" << endl;
+			SetConsoleTextAttribute(h, 14);
+			cout << "\t\t\t press 1 for admin purposes" << endl;
+			cout << "\t\t\t press 2 for customers services and buy products: " << endl;
+			SetConsoleTextAttribute(h, 11);
+			cout << "\t\t\t--------------------------------------------------" << endl;
+			cin >> choice;
+			system("CLS");
+			if (choice == 1)
+			{
+				admin();
+			}
+			if (choice == 2)
+			{
+				int choice2;
+				SetConsoleTextAttribute(h, 11);
+				cout << "\t\t\t-------------------------------------------------------" << endl;
+				SetConsoleTextAttribute(h, 14);
+				cout << "\t\t\t""PRESS 1 FOR BUYING NEW  FEMALE CLOTHES: " << endl;
+				cout << "\t\t\t""PRESS 2 FOR BUYING  MALE CLOTHES: " << endl;
+				SetConsoleTextAttribute(h, 11);
+				cout << "\t\t\t-------------------------------------------------------" << endl;
+				cin >> choice2;
+				system("cls");
+				if (choice2 == 2)
+				{
+					male();
+				}
+				if (choice2 == 1)
+				{
+					female();
+				}
+				system("CLS");
+			}
+			SetConsoleTextAttribute(h, 4);
+				cout << "\t\t\t""PRESS Y TO CONTINUE OR ANY KEY TO EXIT : " << endl;
+				cin >> choose5;
+		} while (choose5 == 'y' || choose5 == 'Y');
+}
+int admin()
+{
+	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+	/signup();/
+	int a=0;
+	char choiceadmin;
+	do
+	{
+	   a==login();
+	} while (a == 1 );
+	char b;
+	do
+
+	{
+		cout << endl;
+		SetConsoleTextAttribute(h, 5);
+		cout << "\t\t\t\t------------------------------------------------"<<endl;
+		SetConsoleTextAttribute(h, 11);
+		cout << "\t\t\t\t Press 1 to view male cloth items: " << endl;
+		cout << "\t\t\t\t Press 2 to view female cloth items: " << endl;
+		cout << "\t\t\t\t Press 3 to view shop bill: " << endl;
+		SetConsoleTextAttribute(h, 5);
+		cout << "\t\t\t\t------------------------------------------------"<<endl;
+		cin >> choiceadmin;
+		if (choiceadmin == '1')
+		{
+			SetConsoleTextAttribute(h, 11);
+			male2();
+		}
+		if (choiceadmin == '2')
+		{
+			SetConsoleTextAttribute(h, 11);
+			female2();
+		}
+		if (choiceadmin == '3')
+		{
+			SetConsoleTextAttribute(h, 2);
+			shoporder();
+		}
+		SetConsoleTextAttribute(h, 4);
+		cout << "press y to continue or any key to exit: " << endl;
+		cin >> b;
+		system("cls");
+	} while (b == 'y' || b == 'Y');
+	return 0;
+}
+int male()
+{
+	system("cls");
+	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(h, 11);
+	cout << "\t\t\t--------------------------------------------------------------------------------------------"<<endl;
+	SetConsoleTextAttribute(h, 5);
+	cout << "\t\t\t====================================MALE CLOTHES ENTRY===================================== " << endl;
+	SetConsoleTextAttribute(h, 11);
+	cout << "\t\t\t--------------------------------------------------------------------------------------------" << endl;
+	cout << endl;
+	char ch;
+	do {
+		char choice2;
+		SetConsoleTextAttribute(h, 14);
+		cout << "\t\t\t========================================="<<endl;
+		SetConsoleTextAttribute(h, 11);
+		cout << "\t\t\tPRESS 0 for PURCHASING ITEMS: " << endl;
+		cout << "\t\t\tPRESS 1 FOR DISPLAY: " << endl;
+		cout << "\t\t\tPRESS 2 FOR UPDATING YOUR PURCHASE: " << endl;
+		SetConsoleTextAttribute(h, 14);
+		cout << "\t\t\t=========================================";
+		cin >> choice2;
+		system("cls");
+		if (choice2 == '1')
+		{
+			display();
+		}
+		if (choice2 == '2')
+		{
+			update();
+		}
+		if (choice2 == '0')
+		{
+			input();
+		}
+		SetConsoleTextAttribute(h, 4);
+		cout << "------------------PRESS Y TO CONTINUE OR ANY KEY TO CHECKOUT:------------------ " << endl;
+		cin >> ch;
+	} while (ch == 'Y' || ch == 'y');
+	return 0;
+}
+int update()
+{
+	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+	int no, found = 0;
+	SetConsoleTextAttribute(h, 5);
+	cout << "\t\t============YOUR PURCHASES ARE=============" << endl;
+	for (int i = 0; i < 90; i++)
+	{
+		SetConsoleTextAttribute(h, 14);
+		cout << "-";
+	}
+	cout << endl;
+	for (int j = 0; j < index; j++)
+	{
+		SetConsoleTextAttribute(h, 2);
+		cout << "\t| NO OF PRODUCT" << j << ":" << "Your purchases are: " << endl;
+		cout << "\t| NO OF PRODUCT" << j << ":" << " THE CLOTH TYPE IS: " << obj3[j].clothtype1 << endl;
+		cout << "\t| NO OF PRODUCT" << j << ":" << " THE MATERIAL IS: " << obj3[j].clothmaterial1 << endl;
+		cout << "\t| NO OF PRODUCT" << j << ":" << " THE COLOR IS: " << obj3[j].clothcolor1 << endl;
+		cout << "\t| NO OF PRODUCT" << j << ":" << " The SIZE IS: " << obj3[j].clothsize1 << endl;
+		cout << "\t| NO OF PRODUCT" << j << ":" << " The cost of PRODUCT purchased  is: " << obj3[j].total << endl;
+		SetConsoleTextAttribute(h, 14);
+		cout << "-------------------------------------------------------------------------------------------" << endl;
+	}
+	cout << endl;
+	SetConsoleTextAttribute(h, 3);
+	cout << "ENTER THE NUMBER OF PRODUCT YOU WANT TO REMOVE: ";
+	cin >> no;
+	for (int i = 0; i < 91; i++)
+	{
+		SetConsoleTextAttribute(h, 14);
+		cout << "-";
+	}
+	cout << endl;
+	for (int i = 0; i < index; i++)
+	{
+		if (no == obj3[i].id)
+		{
+			for (int k = i; k < index - 1; k++)
+			{
+				obj3[k].clothtype1 = obj3[k + 1].clothtype1;
+				obj3[k].clothmaterial1 = obj3[k + 1].clothmaterial1;
+				obj3[k].clothcolor1 = obj3[k + 1].clothcolor1;
+				obj3[k].clothsize1 = obj3[k + 1].clothsize1;
+				obj3[k + 1].total == 0;
+			}
+			cout << obj3[index].total << " is";
+			index--;
+			cout << " deleted\n";
+			found++;
+			break;
+		}
+	}
+	sum = 0;
+	for (int o = 0; o < index; o++)
+	{
+		sum += obj3[o].total;
+	}
+	if (found == 0)
+	{
+		SetConsoleTextAttribute(h, 4);
+		cout << " \n * invalid **" << endl;
+	}
+	return sum;
+}
+int display()
+{
+	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(h, 9);
+	cout << "\t\t=========YOUR PURCHASES ARE==========" << endl;
+	for (int i = 0; i < 90; i++)
+	{
+		SetConsoleTextAttribute(h, 3);
+		cout << "-";
+	}
+	cout << endl;
+	for (int j = 0; j < index; j++)
+	{
+		SetConsoleTextAttribute(h, 2);
+		cout << "\t| NO OF PRODUCT" << j << ":" << "Your purchases are: " << endl;
+		cout << "\t| NO OF PRODUCT" << j << ":" << " THE CLOTH TYPE IS: " << obj3[j].clothtype1 <<endl;
+		cout << "\t| NO OF PRODUCT" << j << ":" << " THE MATERIAL IS: " << obj3[j].clothmaterial1 << endl;
+		cout << "\t| NO OF PRODUCT" << j << ":" << " THE COLOR IS: " << obj3[j].clothcolor1 << endl;
+		cout << "\t| NO OF PRODUCT" << j << ":" << " The SIZE IS: " << obj3[j].clothsize1 <<  endl;
+		cout << "\t| NO OF PRODUCT" << j << ":" << " The cost of PRODUCT purchased  is: " << obj3[j].total  << endl;
+		SetConsoleTextAttribute(h, 3);
+		cout << "-------------------------------------------------------------------------------------------"<<endl;
+	}
+	sum = 0;
+	for (int o = 0; o < index; o++)
+	{
+		sum += obj3[o].total;
+	}
+	SetConsoleTextAttribute(h, 15);
+	cout << "\t\t-------------------------------------------------------\t\t\t\t\t"<< endl;
+	SetConsoleTextAttribute(h, 10);
+	cout << "\t\t Your Total Bill is: " << sum <<"  "<<"\t\t\t\t\t "<<endl;
+	SetConsoleTextAttribute(h, 15);
+	cout << "\t\t-------------------------------------------------------\t\t\t\t\t" << endl;
+	for (int i = 0; i < 91; i++)
+	{
+		SetConsoleTextAttribute(h, 3);
+		cout << "-";
+	}
+	cout << endl;
+	return 0;
+}
+int input()
+{
+	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+	for (int i = 0; i < 67; i++)
+	{
+		cout << " ";
+	}
+	for (int i = 0; i < 35; i++)
+	{
+		SetConsoleTextAttribute(h, 3);
+		cout << "=";
+	}
+	cout << endl;
+	SetConsoleTextAttribute(h, 14);
+	cout << " ---------------------------------------------------------------------------MALE CLOTHES ENTRY------------------------------------------------------------------------ " << endl;
+	cout << "|";
+	for (int i = 0; i < 67; i++)
+	{
+		cout << " ";
+	}
+	for (int i = 0; i < 35; i++)
+	{
+		SetConsoleTextAttribute(h, 3);
+		cout << "=";
+	}
+	for (int i = 0; i < 63; i++)
+	{
+		cout << " ";
+	}
+	SetConsoleTextAttribute(h, 3);
+	cout << "|" << endl;
+	cout << "|";
+	for (int i = 0; i < 10; i++)
+	{
+		cout << " ";
+	}
+	for (int i = 0; i < 30; i++)
+	{
+		SetConsoleTextAttribute(h, 3);
+		cout << "-";
+	}
+	for (int i = 0; i < 54; i++)
+	{
+		cout << " ";
+	}
+	for (int i = 0; i < 30; i++)
+	{
+		SetConsoleTextAttribute(h, 3);
+		cout << "-";
+	}
+	for (int i = 0; i < 41; i++)
+	{
+		cout << " ";
+	}
+	SetConsoleTextAttribute(h, 3);
+	cout << "|" << endl;
+	cout << "|";
+	for (int i = 0; i < 11; i++)
+	{
+		cout << " ";
+	}
+	SetConsoleTextAttribute(h, 10);
+	cout << " Cloth type and their prices ";
+	for (int i = 0; i < 61; i++)
+	{
+		cout << " ";
+	}
+	SetConsoleTextAttribute(h, 10);
+	cout << " CLOTH MATERIAL ";
+	for (int i = 0; i < 48; i++)
+	{
+		cout << " ";
+	}
+	SetConsoleTextAttribute(h, 3);
+	cout << "|" << endl;
+	cout << "|";
+	for (int i = 0; i < 10; i++)
+	{
+		cout << " ";
+	}
+	for (int i = 0; i < 30; i++)
+	{
+		SetConsoleTextAttribute(h, 3);
+		cout << "-";
+	}
+	for (int i = 0; i < 54; i++)
+	{
+		cout << " ";
+	}
+	for (int i = 0; i < 30; i++)
+	{
+		SetConsoleTextAttribute(h, 3);
+		cout << "-";
+	}
+	for (int i = 0; i < 41; i++)
+	{
+		cout << " ";
+	}
+	SetConsoleTextAttribute(h, 3);
+	cout << "|" << endl;
+	SetConsoleTextAttribute(h, 2);
+	cout << "| Following are tthe types available in our store with their prices";
+	for (int i = 0; i < 20; i++)
+	{
+		cout << " ";
+	}
+	SetConsoleTextAttribute(h, 2);
+	cout << "Following are the material our stores offer for men wear clothes";
+	for (int i = 0; i < 15; i++)
+	{
+		cout << " ";
+	}
+	SetConsoleTextAttribute(h, 3);
+	cout << "|" << endl;
+	obj[0].clothtype = "Pants        ";
+	obj[1].clothtype = "Collar-Shirts";
+	obj[2].clothtype = "Jackets      ";
+	obj[3].clothtype = "Shorts       ";
+	obj[4].clothtype = "Trousers     ";
+	obj[5].clothtype = "Jeans        ";
+	obj[6].clothtype = "Tshirts      ";
+	obj[0].price = 350;
+	obj[1].price = 300;
+	obj[2].price = 800;
+	obj[3].price = 300;
+	obj[4].price = 400;
+	obj[5].price = 600;
+	obj[6].price = 450;
+	obj[0].clothmaterial = "Cotton  ";
+	obj[1].clothmaterial = "Silk    ";
+	obj[2].clothmaterial = "Linen   ";
+	obj[3].clothmaterial = "Dobby   ";
+	obj[4].clothmaterial = "Jacquard";
+	obj[5].clothmaterial = "Boski   ";
+	obj[6].clothmaterial = "Khaddar ";
+	for (int i = 0; i < 7; i++)
+	{
+		SetConsoleTextAttribute(h, 3);
+		cout << "| The price of " << obj[i].clothtype << " is: " << obj[i].price << "/-";
+		for (int j = 0; j < 49; j++)
+		{
+			cout << " ";
+		}
+		SetConsoleTextAttribute(h, 3);
+		cout << obj[i].clothmaterial;
+		for (int k = 0; k < 71; k++)
+		{
+			cout << " ";
+		}
+		SetConsoleTextAttribute(h, 3);
+		cout << "| " << endl;
+	}
+	SetConsoleTextAttribute(h, 3);
+	cout << "|";
+	for (int j = 0; j < 10; j++)
+	{
+		cout << " ";
+	}
+	for (int j = 0; j < 28; j++)
+	{
+		SetConsoleTextAttribute(h, 3);
+		cout << "-";
+	}
+	for (int i = 0; i < 56; i++)
+	{
+		cout << " ";
+	}
+	for (int i = 0; i < 30; i++)
+	{
+		SetConsoleTextAttribute(h, 3);
+		cout << "-";
+	}
+	for (int i = 0; i < 41; i++)
+	{
+		cout << " ";
+	}
+	SetConsoleTextAttribute(h, 3);
+	cout << "|" << endl;
+	cout << "|";
+	for (int j = 0; j < 17; j++)
+	{
+		cout << " ";
+	}
+	SetConsoleTextAttribute(h, 2);
+	cout << " CLOTH COLOR ";
+	for (int i = 0; i < 75; i++)
+	{
+		cout << " ";
+	}
+	SetConsoleTextAttribute(h, 2);
+	cout << "CLOTH SIZE ";
+	for (int i = 0; i < 49; i++)
+	{
+		cout << " ";
+	}
+	cout << "|" << endl;
+	cout << "| ";
+	for (int j = 0; j < 9; j++)
+	{
+		cout << " ";
+	}
+	for (int j = 0; j < 28; j++)
+	{
+		SetConsoleTextAttribute(h, 3);
+		cout << "-";
+	}
+	for (int i = 0; i < 56; i++)
+	{
+		cout << " ";
+	}
+	for (int i = 0; i < 30; i++)
+	{
+		SetConsoleTextAttribute(h, 3);
+		cout << "-";
+	}
+	for (int i = 0; i < 41; i++)
+	{
+		cout << " ";
+	}
+	SetConsoleTextAttribute(h, 3);
+	cout << "|" << endl;
+	SetConsoleTextAttribute(h, 2);
+	cout << "| We have fololowing available colours for our merchandise: ";
+	for (int i = 0; i < 27; i++)
+	{
+		cout << " ";
+	}
+	SetConsoleTextAttribute(h, 2);
+	cout << "The Standard size available in our store is";
+	for (int i = 0; i < 36; i++)
+	{
+		cout << " ";
+	}
+	SetConsoleTextAttribute(h, 3);
+	cout << "|" << endl;
+	obj[0].color = "Red       ";
+	obj[1].color = "Black     ";
+	obj[2].color = "Blue      ";
+	obj[3].color = "Light Blue";
+	obj[4].color = "Orange    ";
+	obj[5].color = "Purple    ";
+	obj[6].color = "Dark Blue ";
+	obj[0].size = "Small      ";
+	obj[1].size = "XSmall     ";
+	obj[2].size = "2XSmall    ";
+	obj[3].size = "Medium     ";
+	obj[4].size = "Large      ";
+	obj[5].size = "XLarge     ";
+	obj[6].size = "2XLarge    ";
+
+	for (int i = 0; i < 7; i++)
+	{
+		SetConsoleTextAttribute(h, 3);
+		cout << "| " << obj[i].color;
+		for (int j = 0; j < 75; j++)
+		{
+			cout << " ";
+		}
+		SetConsoleTextAttribute(h, 3);
+		cout << obj[i].size;
+		for (int k = 0; k < 68; k++)
+		{
+			cout << " ";
+		}
+		SetConsoleTextAttribute(h, 3);
+		cout << "| " << endl;
+	}
+	cout << " ";
+	for (int i = 0; i < 165; i++)
+	{
+		SetConsoleTextAttribute(h, 14);
+		cout << "-";
+	}
+	cout << endl;
+	cout << endl;
+	cout << " ";
+	for (int i = 0; i < 75; i++)
+	{
+		SetConsoleTextAttribute(h, 14);
+		cout << "-";
+	}
+	SetConsoleTextAttribute(h, 13);
+	cout << "ENTER YOUR CHOICE:";
+	for (int i = 0; i < 74; i++)
+	{
+		SetConsoleTextAttribute(h, 14);
+		cout << "-";
+	}
+	cout << endl;
+	char choose4;
+	do {
+		SetConsoleTextAttribute(h, 8);
+		obj3[index].id = index;
+		string temp1, temp2, temp3;
+		int choose, choose2, choose3, choose5, quan;
+		cout << "| PRESS 0 for pants " << endl;
+		cout << "| PRESS 1 for Shirts " << endl;
+		cout << "| PRESS 2 for jackets " << endl;
+		cout << "| PRESS 3 for Shorts " << endl;
+		cout << "| PRESS 4 for Trousers " << endl;
+		cout << "| PRESS 5 for jeans " << endl;
+		cout << "| PRESS 6 for T-shirts " << endl;
+		cin >> choose;
+		if (choose == 0)
+		{
+			temp1 = obj[0].clothtype;
+			obj3[index].clothtype1 = temp1;
+			cout <<"| "<< mqto.pantsqty << "IN STOCKS" << endl;
+			cout <<"| ENTER THE QUANTITY:" << endl;
+			cin >> quan;
+			cout <<"|";
+			if (quan > mqto.pantsqty)
+			{
+				cout << "| STOCK UNAVAILABLE" << endl;
+			}
+			else
+			{
+				mqto.pantsqty = mqto.pantsqty - quan;
+				cout << "| remaining : " << mqto.pantsqty << endl;
+				obj3[index].total = quan * obj[0].price;
+				cout <<"|" <<obj3[index].total << endl;
+			}
+		}
+		else if (choose == 1)
+		{
+			temp1 = obj[1].clothtype;
+			obj3[index].clothtype1 = temp1;
+			cout <<"| "<<mqto.shirtsqty << "IN STOCKS" << endl;
+			cout <<"| ENTER THE QUANTITY:" << endl;
+			cout <<"| ";
+			cin >> quan;
+			if (quan > mqto.shirtsqty)
+			{
+				cout << "| STOCK UNAVAILABLE" << endl;
+			}
+			else
+			{
+				mqto.shirtsqty = mqto.shirtsqty - quan;
+				cout << "| remaining : " << mqto.shirtsqty << endl;
+				obj3[index].total = quan * obj[1].price;
+				cout <<"| "<< obj3[index].total << endl;
+			}
+		}
+		else if (choose == 2)
+		{
+			temp1 = obj[2].clothtype;
+			obj3[index].clothtype1 = temp1;
+			cout <<"|"<< mqto.jacketsqty << "IN STOCKS" << endl;
+			cout <<"| ENTER THE QUANTITY:" << endl;
+			cout <<"| ";
+			cin >> quan;
+			if (quan > mqto.jacketsqty)
+			{
+				cout << "| STOCK UNAVAILABLE" << endl;
+			}
+			else
+			{
+				mqto.jacketsqty = mqto.jacketsqty - quan;
+				cout << "| remaining : " << mqto.jacketsqty << endl;
+				obj3[index].total = quan * obj[2].price;
+				cout <<"|"<< obj3[index].total << endl;
+			}
+		}
+		else if (choose == 3)
+		{
+			temp1 = obj[3].clothtype;
+			obj3[index].clothtype1 = temp1;
+			cout <<"| "<< mqto.shortsqty << "IN STOCKS" << endl;
+			cout <<"| ENTER THE QUANTITY:" << endl;
+			cout <<"| ";
+			cin >> quan;
+			if (quan > mqto.shortsqty)
+			{
+				cout << "| STOCK UNAVAILABLE" << endl;
+			}
+			else
+			{
+				mqto.shortsqty = mqto.shortsqty - quan;
+				cout << "| remaining " << mqto.shortsqty << endl;
+				obj3[index].total = quan * obj[3].price;
+				cout <<"|"<< obj3[index].total << endl;
+			}
+		}
+		else if (choose == 4)
+		{
+			temp1 = obj[4].clothtype;
+			obj3[index].clothtype1 = temp1;
+			cout <<"| "<< mqto.trouserssqty << "IN STOCKS" << endl;
+			cout <<"| ENTER THE QUANTITY:" << endl;
+			cin >> quan;
+			if (quan > mqto.trouserssqty)
+			{
+				cout << "| STOCK UNAVAILABLE" << endl;
+			}
+			else
+			{
+				mqto.trouserssqty = mqto.trouserssqty - quan;
+				cout << "| remaining: " << mqto.trouserssqty << endl;
+				obj3[index].total = quan * obj[4].price;
+				cout <<"|"<< obj3[index].total << endl;
+			}
+		}
+		else if (choose == 5)
+		{
+			temp1 = obj[5].clothtype;
+			obj3[index].clothtype1 = temp1;
+			cout <<"|"<< mqto.jeansqty << "IN STOCKS" << endl;
+			cout <<"| ENTER THE QUANTITY:" << endl;
+			cout <<"| ";
+			cin >> quan;
+			if (quan > mqto.jeansqty)
+			{
+				cout << "| STOCK UNAVAILABLE" << endl;
+			}
+			else
+			{
+				mqto.jeansqty = mqto.jeansqty - quan;
+				cout << "| remaining " << mqto.jeansqty << endl;
+				obj3[index].total = quan * obj[5].price;
+				cout <<"|" << obj3[index].total << endl;
+			}
+		}
+		else if (choose == 6)
+		{
+			temp1 = obj[6].clothtype;
+			obj3[index].clothtype1 = temp1;
+			cout <<"| "<< mqto.tshirtsqty << "IN STOCKS" << endl;
+			cout <<"| ENTER THE QUANTITY:" << endl;
+			cout <<"| ";
+			cin >> quan;
+			if (quan > mqto.tshirtsqty)
+			{
+				cout << "| STOCK UNAVAILABLE" << endl;
+			}
+			else
+			{
+				mqto.tshirtsqty = mqto.tshirtsqty - quan;
+				cout << "| remaining " << mqto.tshirtsqty << endl;
+				obj3[index].total = quan * obj[6].price;
+				cout <<"| " << obj3[index].total << endl;
+			}
+		}
+		cout << "| The Available Cloth Materials are: " << endl;
+		cout << "| Press '0' COTTON" << endl;
+		cout << "| Press '1' SILK" << endl;
+		cout << "| Press '2' LINEN" << endl;
+		cout << "| Press '3' DOBBY" << endl;
+		cout << "| Press '4' JACQUARD" << endl;
+		cout << "| Press '5' BOSKI" << endl;
+		cout << "| Press '6' KHADDAR" << endl;
+		cout << "| ";
+		cin >> choose2;
+		if (choose2 == 0)
+		{
+			obj3[index].clothmaterial1 = obj[0].clothmaterial;
+		}
+		if (choose2 == 1)
+		{
+			obj3[index].clothmaterial1 = obj[1].clothmaterial;
+		}
+		if (choose2 == 2)
+		{
+			obj3[index].clothmaterial1 = obj[2].clothmaterial;
+		}
+		if (choose2 == 3)
+		{
+			obj3[index].clothmaterial1 = obj[3].clothmaterial;
+		}
+		if (choose2 == 4)
+		{
+			obj3[index].clothmaterial1 = obj[4].clothmaterial;
+		}
+		if (choose2 == 5)
+		{
+			obj3[index].clothmaterial1 = obj[5].clothmaterial;
+		}
+		if (choose2 == 6)
+		{
+			obj3[index].clothmaterial1 = obj[6].clothmaterial;
+		}
+		cout << "| THE Available Colors are: " << endl;
+		cout << "| Press '0' for RED" << endl;
+		cout << "| Press '1' for black" << endl;;
+		cout << "| Press '2' for blue" << endl;
+		cout << "| Press '3' for lightblue" << endl;
+		cout << "| Press '4' for orange" << endl;
+		cout << "| Press '5' for purple" << endl;
+		cout << "| Press '6' for dark blue" << endl;
+		cout << "| ";
+		cin >> choose3;
+		if (choose3 == 0)
+		{
+			obj3[index].clothcolor1 = obj[0].color;
+		}
+		if (choose3 == 1)
+		{
+			obj3[index].clothcolor1 = obj[1].color;
+		}
+		if (choose3 == 2)
+		{
+			obj3[index].clothcolor1 = obj[2].color;
+		}
+		if (choose3 == 3)
+		{
+			obj3[index].clothcolor1 = obj[3].color;
+		}
+		if (choose3 == 4)
+		{
+			obj3[index].clothcolor1 = obj[4].color;
+		}
+		if (choose3 == 5)
+		{
+			obj3[index].clothcolor1 = obj[5].color;
+		}
+		if (choose == 6)
+		{
+			obj3[index].clothcolor1 = obj[6].color;
+		}
+		cout << "| The Available Sizes Are:" << endl;
+		cout << "| Press 0 for Small" << endl;
+		cout << "| Press 1 for XSmall" << endl;
+		cout << "| Press 2 for 2XSmall" << endl;
+		cout << "| Press 3 for Medium" << endl;
+		cout << "| Press 4 for Large" << endl;
+		cout << "| Press 5 for XLarge" << endl;
+		cout << "| Press 6 for 2XLarge" << endl;
+		cin >> choose5;
+		cout << "| ";
+		if (choose5 == 0)
+		{
+			obj3[index].clothsize1 = obj[0].size;
+		}
+		if (choose5 == 1)
+		{
+			obj3[index].clothsize1 = obj[1].size;
+		}
+		if (choose5 == 2)
+		{
+			obj3[index].clothsize1 = obj[2].size;
+		}
+		if (choose5 == 3)
+		{
+			obj3[index].clothsize1 = obj[3].size;
+		}
+		if (choose5 == 4)
+		{
+			obj3[index].clothsize1 = obj[4].size;
+		}
+		if (choose5 == 5)
+		{
+			obj3[index].clothsize1 = obj[5].size;
+		}
+		if (choose5 == 6)
+		{
+			obj3[index].clothsize1 = obj[6].size;
+		}
+		index++;
+		cout << "PRESS 'Y' TO CONTINUE SHOPPING OR ANY KEY TO EXIT: ";
+		cin >> choose4;
+	} while (choose4 == 'y' || choose4 == 'Y');
+	system("cls");
+	return 0;
+}
+int female()
+{
+	system("cls");
+	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(h, 11);
+	cout << "\t\t\t--------------------------------------------------------------------------------------------" << endl;
+	SetConsoleTextAttribute(h, 5);
+	cout << "\t\t\t====================================FEMALE CLOTHES ENTRY===================================== " << endl;
+	SetConsoleTextAttribute(h, 11);
+	cout << "\t\t\t--------------------------------------------------------------------------------------------" << endl;
+	cout << endl;
+	char ch;
+	do {
+		char choice2;
+		SetConsoleTextAttribute(h, 14);
+		cout << "\t\t\t=========================================" << endl;
+		SetConsoleTextAttribute(h, 11);
+		cout << "\t\t\tPRESS 0 for PURCHASING ITEMS: " << endl;
+		cout << "\t\t\tPRESS 1 FOR DISPLAY: " << endl;
+		cout << "\t\t\tPRESS 2 FOR UPDATING YOUR PURCHASE: " << endl;
+		SetConsoleTextAttribute(h, 14);
+		cout << "\t\t\t=========================================";
+		cin >> choice2;
+		system("cls");
+		if (choice2 == '1')
+		{
+			display();
+		}
+		if (choice2 == '2')
+		{
+			update();
+		}
+		if (choice2 == '0')
+		{
+			input2();
+		}
+		cout << "PRESS Y TO CONTINUE OR ANY KEY TO CHECKOUT and exit from cloth entries: " << endl;
+		cin >> ch;
+	} while (ch == 'Y' || ch == 'y');
+	return 0;
+}
+int input2()
+{
+	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+	for (int i = 0; i < 67; i++)
+	{
+		cout << " ";
+	}
+	for (int i = 0; i < 35; i++)
+	{
+		SetConsoleTextAttribute(h, 3);
+		cout << "=";
+	}
+	cout << endl;
+	SetConsoleTextAttribute(h, 14);
+	cout << " ---------------------------------------------------------------------------FEMALE CLOTHES ENTRY----------------------------------------------------------------------- " << endl;
+	cout << "|";
+	for (int i = 0; i < 67; i++)
+	{
+		cout << " ";
+	}
+	for (int i = 0; i < 35; i++)
+	{
+		SetConsoleTextAttribute(h, 3);
+		cout << "=";
+	}
+	for (int i = 0; i < 63; i++)
+	{
+		cout << " ";
+	}
+	SetConsoleTextAttribute(h, 3);
+	cout << "|" << endl;
+	cout << "|";
+	for (int i = 0; i < 10; i++)
+	{
+		cout << " ";
+	}
+	for (int i = 0; i < 30; i++)
+	{
+		SetConsoleTextAttribute(h, 3);
+		cout << "-";
+	}
+	for (int i = 0; i < 54; i++)
+	{
+		cout << " ";
+	}
+	for (int i = 0; i < 30; i++)
+	{
+		SetConsoleTextAttribute(h, 3);
+		cout << "-";
+	}
+	for (int i = 0; i < 41; i++)
+	{
+		cout << " ";
+	}
+	SetConsoleTextAttribute(h, 3);
+	cout << "|" << endl;
+	cout << "|";
+	for (int i = 0; i < 11; i++)
+	{
+		cout << " ";
+	}
+	SetConsoleTextAttribute(h, 10);
+	cout << " Cloth type and their prices ";
+	for (int i = 0; i < 61; i++)
+	{
+		cout << " ";
+	}
+	SetConsoleTextAttribute(h, 10);
+	cout << " CLOTH MATERIAL ";
+	for (int i = 0; i < 48; i++)
+	{
+		cout << " ";
+	}
+	SetConsoleTextAttribute(h, 3);
+	cout << "|" << endl;
+	cout << "|";
+	for (int i = 0; i < 10; i++)
+	{
+		cout << " ";
+	}
+	for (int i = 0; i < 30; i++)
+	{
+		SetConsoleTextAttribute(h, 3);
+		cout << "-";
+	}
+	for (int i = 0; i < 54; i++)
+	{
+		cout << " ";
+	}
+	for (int i = 0; i < 30; i++)
+	{
+		SetConsoleTextAttribute(h, 3);
+		cout << "-";
+	}
+	for (int i = 0; i < 41; i++)
+	{
+		cout << " ";
+	}
+	SetConsoleTextAttribute(h, 3);
+	cout << "|" << endl;
+	SetConsoleTextAttribute(h, 10);
+	cout << "| Following items our store provide with the given reasonable prices";
+	obj2[0].price2 = 350;
+	for (int i = 0; i < 20; i++)
+	{
+		cout << " ";
+	}
+	cout << "Following are the material our store offer for female clothes";
+	for (int i = 0; i < 17; i++)
+	{
+		cout << " ";
+	}
+	SetConsoleTextAttribute(h, 3);
+	cout << "|" << endl;
+	SetConsoleTextAttribute(h, 2);
+	obj2[0].price2 = 350;
+	obj2[1].price2 = 300;
+	obj2[2].price2 = 800;
+	obj2[3].price2 = 300;
+	obj2[4].price2 = 400;
+	obj2[5].price2 = 600;
+	obj2[6].price2 = 450;
+	SetConsoleTextAttribute(h, 3);
+	obj2[0].clothtype3 = "Scarfs  ";
+	obj2[1].clothtype3 = "Shirts  ";
+	obj2[2].clothtype3 = "Jackets ";
+	obj2[3].clothtype3 = "Kurti   ";
+	obj2[4].clothtype3 = "Frock   ";
+	obj2[5].clothtype3 = "Jeans   ";
+	obj2[6].clothtype3 = "Skirt   ";
+	obj2[0].clothmaterial3 = "Cotton  ";
+	obj2[1].clothmaterial3 = "Silk    ";
+	obj2[2].clothmaterial3 = "Linen   ";
+	obj2[3].clothmaterial3 = "Shiffon ";
+	obj2[4].clothmaterial3 = "Jacquard";
+	obj2[5].clothmaterial3 = "Chicken ";
+	obj2[6].clothmaterial3 = "Khaddar ";
+	for (int i = 0; i < 7; i++)
+	{
+		SetConsoleTextAttribute(h, 3);
+		cout << "| The Price of " << obj2[i].clothtype3 << " is " << obj2[i].price2 << "/-";
+		for (int j = 0; j < 56; j++)
+		{
+			cout << " ";
+		}
+		SetConsoleTextAttribute(h, 3);
+		cout << obj2[i].clothmaterial3;
+		for (int k = 0; k < 70; k++)
+		{
+			cout << " ";
+		}
+		SetConsoleTextAttribute(h, 3);
+		cout << "|" << endl;
+	}
+	SetConsoleTextAttribute(h, 3);
+	cout << "|";
+	for (int j = 0; j < 10; j++)
+	{
+		cout << " ";
+	}
+	for (int j = 0; j < 28; j++)
+	{
+		SetConsoleTextAttribute(h, 3);
+		cout << "-";
+	}
+	for (int i = 0; i < 56; i++)
+	{
+		cout << " ";
+	}
+	for (int i = 0; i < 30; i++)
+	{
+		SetConsoleTextAttribute(h, 3);
+		cout << "-";
+	}
+	for (int i = 0; i < 41; i++)
+	{
+		cout << " ";
+	}
+	SetConsoleTextAttribute(h, 3);
+	cout << "|" << endl;
+	cout << "|";
+	for (int j = 0; j < 17; j++)
+	{
+		cout << " ";
+	}
+	SetConsoleTextAttribute(h, 2);
+	cout << " CLOTH COLOR ";
+	for (int i = 0; i < 75; i++)
+	{
+		cout << " ";
+	}
+	SetConsoleTextAttribute(h, 2);
+	cout << "CLOTH SIZE ";
+	for (int i = 0; i < 49; i++)
+	{
+		cout << " ";
+	}
+	SetConsoleTextAttribute(h, 3);
+	cout << "|" << endl;
+	cout << "| ";
+	for (int j = 0; j < 9; j++)
+	{
+		cout << " ";
+	}
+	for (int j = 0; j < 28; j++)
+	{
+		SetConsoleTextAttribute(h, 3);
+		cout << "-";
+	}
+	for (int i = 0; i < 56; i++)
+	{
+		cout << " ";
+	}
+	for (int i = 0; i < 30; i++)
+	{
+		SetConsoleTextAttribute(h, 3);
+		cout << "-";
+	}
+	for (int i = 0; i < 41; i++)
+	{
+		cout << " ";
+	}
+	SetConsoleTextAttribute(h, 3);
+	cout << "|" << endl;
+	SetConsoleTextAttribute(h, 2);
+	cout << "| We have fololowing available colours for our merchandise: ";
+	for (int i = 0; i < 28; i++)
+	{
+		cout << " ";
+	}
+	SetConsoleTextAttribute(h, 2);
+	cout << "The Standard size available in our store is";
+	for (int i = 0; i < 35; i++)
+	{
+		cout << " ";
+	}
+	cout << "|" << endl;
+	obj2[0].color3 = "Red     ";
+	obj2[1].color3 = "Black   ";
+	obj2[2].color3 = "Blue    ";
+	obj2[3].color3 = "Pink    ";
+	obj2[4].color3 = "Orange  ";
+	obj2[5].color3 = "Purple  ";
+	obj2[6].color3 = "Darkblue";
+	obj2[0].size = "Small   ";
+	obj2[1].size = "XSmall  ";
+	obj2[2].size = "2XSmall ";
+	obj2[3].size = "Medium  ";
+	obj2[4].size = "Large   ";
+	obj2[5].size = "XLarge  ";
+	obj2[6].size = "2XLarge ";
+
+	for (int i = 0; i < 7; i++)
+	{
+		SetConsoleTextAttribute(h, 3);
+		cout << "| " << obj2[i].color3;
+		for (int j = 0; j < 78; j++)
+		{
+			cout << " ";
+		}
+		SetConsoleTextAttribute(h, 3);
+		cout << obj2[i].size;
+		for (int k = 0; k < 70; k++)
+		{
+			cout << " ";
+		}
+		SetConsoleTextAttribute(h, 3);
+		cout << "| " << endl;
+	}
+	cout << " ";
+	for (int i = 0; i < 166; i++)
+	{
+		SetConsoleTextAttribute(h, 14);
+		cout << "-";
+	}
+	cout << endl;
+	for (int i = 0; i < 75; i++)
+	{
+		cout << "-";
+	}
+	SetConsoleTextAttribute(h, 13);
+	cout << "ENTER YOUR CHOICE:";
+	for (int i = 0; i < 74; i++)
+	{
+		SetConsoleTextAttribute(h, 14);
+		cout << "-";
+	}
+	cout << endl;
+
+	char choose4;
+	do {
+		SetConsoleTextAttribute(h, 8);
+		obj3[index].id = index;
+		string ftemp1, ftemp2, ftemp3;
+		int choose, choose2, choose3, choose5, quan;
+		cout << "| PRESS 0 for Scarf " << endl;
+		cout << "| PRESS 1 for Shirts " << endl;
+		cout << "| PRESS 2 for Jackets " << endl;
+		cout << "| PRESS 3 for Kurti " << endl;
+		cout << "| PRESS 4 for Frocks " << endl;
+		cout << "| PRESS 5 for Jeans " << endl;
+		cout << "| PRESS 6 for Skirt " << endl;
+		cout << "| ";
+		cin >> choose;
+		if (choose == 0)
+		{
+			ftemp1 = obj2[0].clothtype3;
+			obj3[index].clothtype1 = ftemp1;
+			cout << "| " << Fqto.scarfsqty << "IN STOCKS" << endl;
+			cout << "| ENTER THE QUANTITY:" << endl;
+			cout << "| ";
+			cin >> quan;
+
+			if (quan > Fqto.scarfsqty)
+			{
+				cout << "| STOCK UNAVAILABLE" << endl;
+
+			}
+			else
+			{
+				Fqto.scarfsqty = Fqto.scarfsqty - quan;
+				cout << "| REMAINING" << Fqto.scarfsqty << endl;
+				obj3[index].total = quan * obj2[0].price2;
+				cout << "| " << obj3[index].total << endl;
+			}
+		}
+		else if (choose == 1)
+		{
+			ftemp1 = obj2[1].clothtype3;
+			obj3[index].clothtype1 = ftemp1;
+			cout << "| " << Fqto.shirtsqty << "IN STOCKS" << endl;
+			cout << "| ENTER THE QUANTITY:" << endl;
+			cout << "| ";
+			cin >> quan;
+			if (quan > Fqto.shirtsqty)
+			{
+				cout << "| STOCK UNAVAILABLE" << endl;
+			}
+			else
+			{
+				Fqto.shirtsqty = Fqto.shirtsqty - quan;
+				cout << "| REMAINING " << Fqto.shirtsqty << endl;
+				obj3[index].total = quan * obj2[1].price2;
+				cout << "| " << obj3[index].total << endl;
+			}
+		}
+		else if (choose == 2)
+		{
+			ftemp1 = obj2[2].clothtype3;
+			obj3[index].clothtype1 = ftemp1;
+			cout << "| " << Fqto.jacketsqty << "IN STOCKS" << endl;
+			cout << "| ENTER THE QUANTITY:" << endl;
+			cout << "| ";
+			cin >> quan;
+			if (quan > Fqto.jacketsqty)
+			{
+				cout << "| STOCK UNAVAILABLE" << endl;
+			}
+			else
+			{
+				Fqto.jacketsqty = Fqto.jacketsqty - quan;
+				cout << "| REMANING " << Fqto.jacketsqty << endl;
+				obj3[index].total = quan * obj2[2].price2;
+				cout << "| " << obj3[index].total << endl;
+			}
+		}
+		else if (choose == 3)
+		{
+			ftemp1 = obj2[3].clothtype3;
+			obj3[index].clothtype1 = ftemp1;
+			cout << "| " << Fqto.kurtiqty << "IN STOCKS" << endl;
+			cout << "| ENTER THE QUANTITY:" << endl;
+			cout << "| ";
+			cin >> quan;
+			if (quan > Fqto.kurtiqty)
+			{
+				cout << "| STOCK UNAVAILABLE" << endl;
+			}
+			else
+			{
+				Fqto.kurtiqty = Fqto.kurtiqty - quan;
+				cout << "| REMAINING " << Fqto.kurtiqty << endl;
+				obj3[index].total = quan * obj2[3].price2;
+				cout << "| " << obj3[index].total << endl;
+			}
+		}
+		else if (choose == 4)
+		{
+			ftemp1 = obj2[4].clothtype3;
+			obj3[index].clothtype1 = ftemp1;
+			ftemp1 = obj2[3].clothtype3;
+			cout << "| " << Fqto.frockssqty << "IN STOCKS" << endl;
+			cout << "| ENTER THE QUANTITY:" << endl;
+			cout << "| ";
+			cin >> quan;
+			if (quan > Fqto.frockssqty)
+			{
+				cout << "| STOCK UNAVAILABLE" << endl;
+			}
+			else
+			{
+				Fqto.frockssqty = Fqto.frockssqty - quan;
+				cout << "| REMAINING " << Fqto.frockssqty << endl;
+				obj3[index].total = quan * obj2[4].price2;
+				cout << "| " << obj3[index].total << endl;
+			}
+
+		}
+		else if (choose == 5)
+		{
+			ftemp1 = obj2[5].clothtype3;
+			obj3[index].clothtype1 = ftemp1;
+			cout << "| " << Fqto.jeansqty << "IN STOCKS" << endl;
+			cout << "| ENTER THE QUANTITY:" << endl;
+			cout << "| ";
+			cin >> quan;
+			if (quan > Fqto.jeansqty)
+			{
+				cout << "| STOCK UNAVAILABLE" << endl;
+			}
+			else
+			{
+				Fqto.jeansqty = Fqto.jeansqty - quan;
+				cout << "| REMAINING " << Fqto.jeansqty << endl;
+				obj3[index].total = quan * obj2[5].price2;
+				cout << "| " << obj3[index].total << endl;
+			}
+		}
+		else if (choose == 6)
+		{
+			ftemp1 = obj2[6].clothtype3;
+			obj3[index].clothtype1 = ftemp1;
+			cout << "| " << Fqto.skirtqty << "IN STOCKS" << endl;
+			cout << "| ENTER THE QUANTITY:" << endl;
+			cout << "| ";
+			cin >> quan;
+			if (quan > Fqto.skirtqty)
+			{
+				cout << "| STOCK UNAVAILABLE" << endl;
+			}
+			else
+			{
+				Fqto.skirtqty = Fqto.skirtqty - quan;
+				cout << "| REMAINING " << Fqto.skirtqty << endl;
+				obj3[index].total = quan * obj2[6].price2;
+				cout << "| " << obj3[index].total << endl;
+			}
+		}
+		cout << "| The Available Cloth Materials are: " << endl;
+		cout << "| Press '0' COTTON" << endl;
+		cout << "| Press '1' SILK" << endl;
+		cout << "| Press '2' LINEN" << endl;
+		cout << "| Press '3' SHIFFON" << endl;
+		cout << "| Press '4' JACQUARD" << endl;
+		cout << "| Press '5' CHICKEN" << endl;
+		cout << "| Press '6' KHADDAR" << endl;
+		cout << "| ";
+		cin >> choose2;
+		if (choose2 == 0)
+		{
+			obj3[index].clothmaterial1 = obj2[0].clothmaterial3;
+		}
+		if (choose2 == 1)
+		{
+			obj3[index].clothmaterial1 = obj2[1].clothmaterial3;
+		}
+		if (choose2 == 2)
+		{
+			obj3[index].clothmaterial1 = obj2[2].clothmaterial3;
+		}
+		if (choose2 == 3)
+		{
+			obj3[index].clothmaterial1 = obj2[3].clothmaterial3;
+		}
+		if (choose2 == 4)
+		{
+			obj3[index].clothmaterial1 = obj2[4].clothmaterial3;
+		}
+		if (choose2 == 5)
+		{
+			obj3[index].clothmaterial1 = obj2[5].clothmaterial3;
+		}
+		if (choose2 == 6)
+		{
+			obj3[index].clothmaterial1 = obj2[6].clothmaterial3;
+		}
+		cout << "| Press '0' for RED" << endl;
+		cout << "| Press '1' for Black" << endl;;
+		cout << "| Press '2' for Blue" << endl;
+		cout << "| Press '3' for Pink" << endl;
+		cout << "| Press '4' for Orange" << endl;
+		cout << "| Press '5' for Purple" << endl;
+		cout << "| Press '6' for Dark blue" << endl;
+		cout << "| ";
+		cin >> choose3;
+		if (choose3 == 0)
+		{
+			obj3[index].clothcolor1 = obj2[0].color3;
+		}
+		if (choose3 == 1)
+		{
+			obj3[index].clothcolor1 = obj2[1].color3;
+		}
+		if (choose3 == 2)
+		{
+			obj3[index].clothcolor1 = obj2[2].color3;
+		}
+		if (choose3 == 3)
+		{
+			obj3[index].clothcolor1 = obj2[3].color3;
+		}
+		if (choose3 == 4)
+		{
+			obj3[index].clothcolor1 = obj2[4].color3;
+		}
+		if (choose3 == 5)
+		{
+			obj3[index].clothcolor1 = obj2[5].color3;
+		}
+		if (choose == 6)
+		{
+			obj3[index].clothcolor1 = obj2[6].color3;
+		}
+		cout << "| The available sizes are:" << endl;
+		cout << "| Press 0 for Small" << endl;
+		cout << "| Press 1 for XSmall" << endl;
+		cout << "| Press 2 for 2XSmall" << endl;
+		cout << "| Press 3 for Medium" << endl;
+		cout << "| Press 4 for Large" << endl;
+		cout << "| Press 5 for XLarge" << endl;
+		cout << "| Press 6 for 2XLarge" << endl;
+		cout << "| ";
+		cin >> choose5;
+		if (choose5 == 0)
+		{
+			obj3[index].clothsize1 = obj2[0].size;
+		}
+		if (choose5 == 1)
+		{
+			obj3[index].clothsize1 = obj2[1].size;
+		}
+		if (choose5 == 2)
+		{
+			obj3[index].clothsize1 = obj2[2].size;
+		}
+		if (choose5 == 3)
+		{
+			obj3[index].clothsize1 = obj2[3].size;
+		}
+		if (choose5 == 4)
+		{
+			obj3[index].clothsize1 = obj2[4].size;
+		}
+		if (choose5 == 5)
+		{
+			obj3[index].clothsize1 = obj2[5].size;
+		}
+		if (choose5 == 6)
+		{
+			obj3[index].clothsize1 = obj2[6].size;
+		}
+		index++;
+		cout << "| PRESS 'Y' TO CONTINUE SHOPPING OR ANY OTHER KEY TO CHECK OUT:";
+		cin >> choose4;
+		cout << "| ";
+		for (int i = 0; i < 56; i++)
+		{
+			cout << "=";
+		}
+		cout << endl;
+	} while (choose4 == 'y' || choose4 == 'Y');
+	return 0;
+}
+int male2()
+{
+	obj[0].clothtype = "pants";
+	obj[1].clothtype = "Collar-shirts";
+	obj[2].clothtype = "jackets";
+	obj[3].clothtype = "shorts";
+	obj[4].clothtype = "trousers";
+	obj[5].clothtype = "jeans";
+	obj[6].clothtype = "tshirts";
+	obj[0].price = 350;
+	obj[1].price = 300;
+	obj[2].price = 800;
+	obj[3].price = 300;
+	obj[4].price = 400;
+	obj[5].price = 600;
+	obj[6].price = 450;
+	obj[0].clothmaterial = "COTTON";
+	obj[1].clothmaterial = "SILK";
+	obj[2].clothmaterial = "LINEN";
+	obj[3].clothmaterial = "DOBBY";
+	obj[4].clothmaterial = "JACQUARD";
+	obj[5].clothmaterial = "BOSKI";
+	obj[6].clothmaterial = "KHADDAR";
+	obj[0].color = "RED";
+	obj[1].color = "BLACK";
+	obj[2].color = "BLUE";
+	obj[3].color = "LIGHT BLUE";
+	obj[4].color = "ORANGE";
+	obj[5].color = "PURPLE";
+	obj[6].color = "DARKBLUE";
+	obj[0].size = "Small   ";
+	obj[1].size = "XSmall  ";
+	obj[2].size = "2XSmall ";
+	obj[3].size = "Medium  ";
+	obj[4].size = "Large   ";
+	obj[5].size = "XLarge  ";
+	obj[6].size = "2XLarge ";
+	/////////////////////////////////////////////                                         ///////////////////////////////////////////
+	////////////////////FILING///////////////////-----------------------------------------///////////////////FILING//////////////////-------------------------
+	////////////////////////////////////////////                                          ///////////////////////////////////////////
+	ofstream cloth("MALE CLOTH.txt", ios::out);
+	for (int i = 0; i < 70; i++)
+	{
+		cloth << "-";
+	}
+	cloth << endl << "-------MALE CLOTHES ARE-------" << endl;
+	for (int i = 0; i < 6; i++)
+	{
+		cloth << "|" << i << " : " << obj[i].clothtype << endl;
+	}
+	cloth << "-------MALE CLOTHES MATERIALS ARE-------" << endl;
+	for (int i = 0; i < 6; i++)
+	{
+		cloth << "|" << i << " : " << obj[i].clothmaterial << endl;
+	}
+	cloth << "-------MALE CLOTHES COLOR ARE-------" << endl;
+	for (int i = 0; i < 6; i++)
+	{
+		cloth << "|" << i << " : " << obj[i].color << "  " << endl;
+	}
+	for (int i = 0; i < 70; i++)
+	{
+		cloth << "-";
+	}
+	cloth.close();
+	ifstream ad("MALE CLOTH.txt", ios::in);
+	cout << "\t\t----------------------------" << endl;
+	cout << "\t\t=======CLOTH RECORDS========" << endl;
+	cout << "\t\t----------------------------"<<endl;
+	while (ad.eof() == 0) {
+		string line;
+		getline(ad, line);
+		cout << line << endl;
+	}
+	ad.close();
+	return 0;
+}
+int female2()
+{
+	obj2[0].price2 = 350;
+	obj2[1].price2 = 300;
+	obj2[2].price2 = 800;
+	obj2[3].price2 = 300;
+	obj2[4].price2 = 400;
+	obj2[5].price2 = 600;
+	obj2[6].price2 = 450;
+	obj2[0].clothtype3 = "scarf";
+	obj2[1].clothtype3 = "shirts";
+	obj2[2].clothtype3 = "jackets";
+	obj2[3].clothtype3 = "kurti";
+	obj2[4].clothtype3 = "frock";
+	obj2[5].clothtype3 = "jeans";
+	obj2[6].clothtype3 = "skirt";
+	obj2[0].clothmaterial3 = "COTTON";
+	obj2[1].clothmaterial3 = "SILK";
+	obj2[2].clothmaterial3 = "LINEN";
+	obj2[3].clothmaterial3 = "SHIFON";
+	obj2[4].clothmaterial3 = "JACQUARD";
+	obj2[5].clothmaterial3 = "CHICKEN";
+	obj2[6].clothmaterial3 = "KHADDAR";
+	obj2[0].color3 = "RED";
+	obj2[1].color3 = "BLACK";
+	obj2[2].color3 = "BLUE";
+	obj2[3].color3 = "PINK";
+	obj2[4].color3 = "ORANGE";
+	obj2[5].color3 = "PURPLE";
+	obj2[6].color3 = "DARKBLUE";
+	obj2[0].size = "Small   ";
+	obj2[1].size = "XSmall  ";
+	obj2[2].size = "2XSmall ";
+	obj2[3].size = "Medium  ";
+	obj2[4].size = "Large   ";
+	obj2[5].size = "XLarge  ";
+	obj2[6].size = "2XLarge ";
+	/////////////////////////////////////////////                                         ///////////////////////////////////////////
+	////////////////////FILING///////////////////-----------------------------------------///////////////////FILING//////////////////-------------------------
+	////////////////////////////////////////////                                          ///////////////////////////////////////////
+	ofstream Fcloth("FEMALECLOTH.txt", ios::out);
+	Fcloth << "----FEMALE CLOTHES ARE-----" << endl;
+	for (int i = 0; i < 70; i++)
+	{
+		Fcloth << "-";
+	}
+	Fcloth << endl << "-------FEMALE CLOTHES ARE-------" << endl;
+	for (int i = 0; i < 6; i++)
+	{
+		Fcloth << "|" << i << " : " << obj2[i].clothtype3 << endl;
+	}
+	Fcloth << "-------FEMALE CLOTHES MATERIALS ARE-------" << endl;
+	for (int i = 0; i < 6; i++)
+	{
+		Fcloth << "|" << i << " : " << obj2[i].clothmaterial3 << endl;
+	}
+	Fcloth << "-------FEMALE CLOTHES COLOR ARE-------" << endl;
+	for (int i = 0; i < 6; i++)
+	{
+		Fcloth << "|" << i << " : " << obj2[i].color3 << "  " << endl;
+	}
+	for (int i = 0; i < 70; i++)
+	{
+		Fcloth << "-";
+	}
+	Fcloth.close();
+
+	/////////////////////////////////////////////                                         ///////////////////////////////////////////
+	////////////////////FILING///////////////////-----------------------------------------///////////////////FILING//////////////////-------------------------
+	////////////////////////////////////////////                                          ///////////////////////////////////////////
+	ifstream ad2("FEMALECLOTH.txt", ios::in);
+	cout << "\t\t----------------------------" << endl;
+	cout << "\t\t=======CLOTH RECORDS========" << endl;
+	cout << "\t\t----------------------------" << endl;
+	while (ad2.eof() == 0) {
+		string line;
+		getline(ad2, line);
+		cout << line << endl;
+	}
+	ad2.close();
+	return 0;
+}
+int shoporder()
+{
+	ofstream order("userorder.txt", ios::out);
+	for (int i = 0; i < index; i++)
+	{
+		order << i<< "Your cloth type is " << obj3[i].clothtype1 << endl;
+		order << i<< " Your cloth color is " << obj3[i].clothcolor1 << endl;
+		order <<i<< "Your clothsize is " << obj3[i].clothsize1 << endl;
+		order <<i<< " Your clothmaterial is " << obj3[i].clothmaterial1 << endl;
+		order << i<< "Your total is " << obj3[i].total << endl;
+	}
+	order << "THE TOTAL SALE FOR YOUR SHOP FOR TODAY IS: " << sum;
+	order.close();
+	ifstream ad3("userorder.txt", ios::in);
+	cout << "SHOP record:" << endl;
+	while (ad3.eof() == 0) {
+		string line;
+		getline(ad3, line);
+		cout << line << endl;
+	}
+	ad3.close();
+	return 0;
+}
